@@ -1,0 +1,30 @@
+[
+    {
+    "id": 1,
+    "nombre": "Javier",
+    "email": "javier@mail.com",
+    "puesto": "CEO",
+    "foto": "/images/avatar4.png"
+    },
+    {
+    "id": 2,
+    "nombre": "Pedro",
+    "email": "pedro@mail.com",
+    "puesto": "Developer",
+    "foto": "/images/avatar_2.png"
+    },
+    {
+    "id": 3,
+    "nombre": "Paula",
+    "email": "paula@mail.com",
+    "puesto": "Developer",
+    "foto": "/images/avatar_3.png"
+    },
+    {
+    "id": 4,
+    "nombre": "Nico",
+    "email": "nico@mail.com",
+    "puesto": "Junior",
+    "foto": "/images/avatar_1.png"
+    }
+]
