@@ -1,9 +1,11 @@
 //import { Contador } from "../Contador/Contador"
 import {Favorito} from "../Favorito/Favorito"
+//import UnicoProducto from "../Productos/UnicoProducto"
+//import Link from "react-router-dom"
 
 export function Item({id,nombre, precio, stock,imagen}){
+    //const producto={id,nombre, precio, stock,imagen}
     const CompraClick=()=>{
-        
 
         alert(`¡Agregaste ${nombre} al carrito!`) 
     }
@@ -14,8 +16,8 @@ export function Item({id,nombre, precio, stock,imagen}){
             </div>
             <h3>{nombre}</h3>
             <p>Id. Producto: {id} </p>
+            
             <h4>$ {precio}</h4>
-            {/* <p>Precio: ${precio}</p> */}
             <Favorito/>
             <p>Stock: {stock}</p>
             {/* <Contador/> */}

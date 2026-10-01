@@ -1,9 +1,11 @@
 import "./App.css"
 import {Layout} from "./components/Layout/Layout"
+import { Route, Routes } from "react-router-dom"
 import Productos from "./components/Productos/Productos"
 import Carrito from "./components/Carrito"
+import UnicoProducto from "./components/Productos/UnicoProducto"
 //import FormularioContainer from "./components/FormularioContainer"
-import { Route, Routes } from "react-router-dom"
+
 
 function App(){
   return (
@@ -13,7 +15,7 @@ function App(){
           <Route path="/" element={<Productos />} />
           <Route path="/contacto" element={<h1>Contacto</h1> } />
           <Route path="/productos/" element={<Productos/>} />
-          <Route path="/producto/:id" element={<h1>Producto X ID</h1>} />
+          <Route path="/producto/:id" element={<UnicoProducto/>} />
           <Route path="/carrito" element={<Carrito />} />
         </Route>
       </Routes>
