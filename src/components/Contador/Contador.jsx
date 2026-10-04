@@ -9,12 +9,10 @@ export function Contador(){
         setContador(contador -1);
     }
     return (
-        <div style={{ margin: '20px', padding: '20px', border: '1px solid black'
-        }}>
-        <h3>En el carrito:</h3>
-        <p>{contador}</p>
-        <button onClick={incrementar}>Sumar +1</button>
-        <button onClick={decrementar}>Restar -1</button>
+        <div className="contador">
+            <button className="buttonSumaResta" onClick={decrementar}>-</button>
+            <h3>Unidades: {contador} </h3>
+            <button className="buttonSumaResta" onClick={incrementar}>+</button>
         </div>
     );
 }

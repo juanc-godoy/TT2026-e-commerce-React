@@ -61,7 +61,14 @@ body {
 .link{
   color: var(--col-w);
 }
-
+.numerito{
+  border-radius: 50%;
+  background-color: var(--col-w);
+  color: var(--col-1);
+  border: 1px solid var(--col-w);
+  font-weight: 600;
+  padding: 0.1rem;
+}
 /* LAYOUT-OUTLET*/
 
 .listaProd{
@@ -88,7 +95,7 @@ body {
   overflow: hidden;
   object-fit: cover;
   width: 100%;
-  height: 35%;
+  height: 40%;
 }
 .itemImg{
   width: 100%;
@@ -109,7 +116,20 @@ body {
 .agregarButton:hover{
   background-color: var(--col-w);
   color: var(--col-1);
-
+}
+.contador{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
+.buttonSumaResta{
+  background-color: var(--col-1);
+  color: var(--col-w);
+  border: 2px solid var(--col-1);
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.125rem;
 }
 
 /*FOOTER*/
