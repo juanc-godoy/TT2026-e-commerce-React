@@ -31,7 +31,6 @@ export function Item({id,nombre,precio,stock,imagen}){
             </div>
             <h3>{nombre}</h3>
             <p>Id. Producto: {id} </p>
-            
             <h4>$ {precio}</h4>
             <Favorito/>
             <p>Stock: {stock}</p>
