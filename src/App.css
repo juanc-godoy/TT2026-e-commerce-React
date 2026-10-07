@@ -292,3 +292,27 @@ display: flex;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+/*FORMULARIO
+const formStyle ={
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "24rem",
+        margin: "3rem auto",
+        padding: "1.5rem",
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        gap: "16px"
+    }
+
+*/
+.formAlta{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--col-5);
+  max-width: 24rem;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border: 3px solid var(--col-2);
+  border-radius: 10px;
+  gap: 16px;
+}

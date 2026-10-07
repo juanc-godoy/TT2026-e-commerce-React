@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom"
 import Productos from "./components/Productos/Productos"
 import Carrito from "./components/Carrito"
 import UnicoProducto from "./components/Productos/UnicoProducto"
+import AltaProducto from "./components/Productos/AltaProducto"
 //import FormularioContainer from "./components/FormularioContainer"
 
 
@@ -15,9 +16,9 @@ function App(){
           <Route path="/" element={<Productos />} />
           <Route path="/contacto" element={<h1>Contacto...EN DESARROLLO</h1> } />
           <Route path="/productos/" element={<Productos/>} />
-          <Route path="/producto/:id" element={<UnicoProducto/>} />
+          <Route path="/producto/:id" element={<UnicoProducto />} />
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/alta" element={<h1>Alta de producto...EN DESARROLLO</h1>}> </Route>
+          <Route path="/alta" element={<AltaProducto />} /> 
         </Route>
       </Routes>
     </>

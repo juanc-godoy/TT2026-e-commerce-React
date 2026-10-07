@@ -1,19 +1,9 @@
 //import React from "react";
 
 export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejarCambioImagen,loading}){
-    const formStyle ={
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "24rem",
-        margin: "3rem auto",
-        padding: "1.5rem",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-        gap: "16px"
-    }
-
+    
     return (
-        <form style={formStyle} onSubmit={manejarEnvio}>
+        <form className="formAlta" onSubmit={manejarEnvio}>
             <h3>Agregar Nuevo Producto</h3>
             <div>
                 <label>Nombre del Producto:</label>
