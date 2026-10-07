@@ -1,26 +1,30 @@
-import { Contador } from "../Contador/Contador"
-import {Favorito} from "../Favorito/Favorito"
-import { useCart } from "../Context/CarritoContext"
-//import UnicoProducto from "../Productos/UnicoProducto"
+import { useState } from "react"
 import {Link} from "react-router-dom"
+import { useCart } from "../Context/CarritoContext"
+//import { Contador } from "../Contador/Contador"
+import {Favorito} from "../Favorito/Favorito"
+
+//import UnicoProducto from "../Productos/UnicoProducto"
+
 
 export function Item({id,nombre,precio,stock,imagen}){
-    const producto={id,nombre, precio, stock,imagen}
-    const cantidad= 5
-    
     const {addToCarrito, carrito}=useCart()
+    const producto={id,nombre, precio, stock,imagen}
+    const [cantidad, setCantidad]= useState(0)
+
+    const incrementar=()=>{
+        setCantidad(cantidad+1)
+    }
+    const decrementar=()=>{
+        cantidad>=1
+        ?setCantidad(cantidad-1)
+        : {}//pass
+    }
 
     const manejarAddToCarrito=()=>{
         addToCarrito(producto,cantidad)
-        alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito `)
-        console.log("Carrito:",carrito)
     }
-    /*
-    const handleAddToCart = () => {
-    addToCart(producto, cantidad);
-    alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
-    }
-    */
+    
     return (
         <div className="listaProdItem">
             <div className="itemImgHolder">
@@ -32,9 +36,16 @@ export function Item({id,nombre,precio,stock,imagen}){
                 <h4>$ {precio}</h4>
                 <Favorito/>
                 <p>Stock: {stock}</p>
-                <Contador/>
+                {/* <Contador/> */}
             </div>
-            <button className="agregarButton" onClick={manejarAddToCarrito} >Agregar al carrito</button>
+            <div className="itemButtons">
+                <button className="buttonSumaResta" onClick={decrementar}>-</button>
+                <h3>Uds: {cantidad} </h3>
+                <button className="buttonSumaResta" onClick={incrementar}>+</button>
+            </div>
+            <button className="agregarButton" onClick={manejarAddToCarrito}>
+                Agregar {cantidad>=1&&cantidad} al carrito
+            </button>
         </div>
     )
 }

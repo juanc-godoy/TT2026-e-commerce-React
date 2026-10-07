@@ -1,10 +1,9 @@
 
-
-export function CarritoItem({img,nombre,cantidad,precio}){
+function CarritoItem({imagen,nombre,cantidad,precio}){
     return(
         <div className="carritoItem">
-            <div className="carritoImgHolder">
-                <img className="carritoImg" src={img} alt={nombre} />
+            <div className="carritoItemImgHolder">
+                <img className="carritoItemImg" src={imagen} alt={nombre} />
             </div>
             <h3>{nombre} </h3>
             <p>$ {precio} </p>
@@ -13,3 +12,5 @@ export function CarritoItem({img,nombre,cantidad,precio}){
         </div>
     )
 }
+
+export default CarritoItem

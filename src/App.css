@@ -118,6 +118,12 @@ body {
   background-color: var(--col-w);
   color: var(--col-1);
 }
+.itemButtons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
 .contador{
   display: flex;
   flex-direction: row;

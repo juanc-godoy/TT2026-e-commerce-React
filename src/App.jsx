@@ -13,10 +13,11 @@ function App(){
       <Routes>
         <Route element={<Layout/>} >
           <Route path="/" element={<Productos />} />
-          <Route path="/contacto" element={<h1>Contacto</h1> } />
+          <Route path="/contacto" element={<h1>Contacto...EN DESARROLLO</h1> } />
           <Route path="/productos/" element={<Productos/>} />
           <Route path="/producto/:id" element={<UnicoProducto/>} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/alta" element={<h1>Alta de producto...EN DESARROLLO</h1>}> </Route>
         </Route>
       </Routes>
     </>

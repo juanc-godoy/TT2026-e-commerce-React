@@ -14,8 +14,11 @@ function Navbar(){
                     <Link className="link" to="/carrito">Carrito{totalItems > 0 &&
                     <span>{totalItems}</span>}</Link></li> */}
                 <li className="navItem">
-                    <Link className="link" to="/carrito">Carrito{totalItems > 0 ?
-                    <span className='numerito'>{totalItems}</span>: <span></span>} </Link></li>
+                    <Link className="link" to="/carrito">Carrito{totalItems > 0
+                        ? <span className='numerito'>{totalItems}</span>
+                        : <span></span>}
+                    </Link>
+                </li>
             </ul>
         </nav>
     )
