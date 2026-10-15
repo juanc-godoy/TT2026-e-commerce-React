@@ -8,9 +8,10 @@ import {Favorito} from "../Favorito/Favorito"
 
 
 export function Item({id,nombre,precio,stock,imagen}){
-    const {addToCarrito, carrito}=useCart()
+    const {addToCarrito, getCantidadActual, carrito}=useCart()
     const producto={id,nombre, precio, stock,imagen}
     const [cantidad, setCantidad]= useState(0)
+    const cantidadActual=getCantidadActual(id)
 
     const incrementar=()=>{
         setCantidad(cantidad+1)
@@ -32,11 +33,11 @@ export function Item({id,nombre,precio,stock,imagen}){
             </div>
             <div className="itemInfo" >
                 <Link to={`/producto/${id}`} ><h3>{nombre}</h3></Link>
-                <p>Id. Producto: {id} </p>
                 <h4>$ {precio}</h4>
+                <p>Id. Prod: {id} </p>
                 <Favorito/>
                 <p>Stock: {stock}</p>
-                {/* <Contador/> */}
+                <h3 className="contador">Uds. en carrito: {cantidadActual} </h3>
             </div>
             <div className="itemButtons">
                 <button className="buttonSumaResta" onClick={decrementar}>-</button>

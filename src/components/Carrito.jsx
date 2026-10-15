@@ -1,5 +1,6 @@
 import {useCart} from "./Context/CarritoContext"
 import CarritoItem from "./CarritoItem"
+import { Link } from "react-router-dom"
 
 function Carrito(){
     const {carrito, clearCarrito, totalCarrito}= useCart()
@@ -9,6 +10,7 @@ function Carrito(){
             <div className="carritoContainer">
                 <h1>El carrito esta vacío </h1>
                 <p>Agrega productos para continuar la compra</p>
+                <Link to="/productos"><button className="btnToProductos">Ir a Productos</button> </Link>
             </div>
         )
     }
@@ -28,9 +30,9 @@ function Carrito(){
                     ))}
             </div>
             <div className="carritoBottom" >
-                <button onClick={clearCarrito} className="buttonVaciar">Vaciar Carrito</button>
+                <button onClick={clearCarrito} className="btnVaciar">Vaciar Carrito</button>
                 <h3>Total a pagar: ${totalCarrito()} </h3>
-                <button className="buttonComprar" >Continuar compra</button>
+                <button className="btnComprar" >Continuar compra</button>
             </div>
         </div>
     )

@@ -1,18 +1,13 @@
-import { useState } from "react";
+//import { useState } from "react";
+import { useCart } from "../Context/CarritoContext";
 
-export function Contador(){
-    const [contador, setContador]= useState(0)
-    const incrementar=() =>{
-        setContador(contador +1)
-    }
-    const decrementar = () => {
-        setContador(contador -1);
-    }
+export function Contador(id){
+    const {getCantidadActual}= useCart()
+    const cantidadActual=getCantidadActual(id)
+    
     return (
         <div className="contador">
-            <button className="buttonSumaResta" onClick={decrementar}>-</button>
-            <h3>Unidades: {contador} </h3>
-            <button className="buttonSumaResta" onClick={incrementar}>+</button>
+            <h3>Unidades en carrito: {cantidadActual} </h3>
         </div>
     );
 }

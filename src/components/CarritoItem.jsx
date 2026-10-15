@@ -1,5 +1,9 @@
+import {useCart} from "./Context/CarritoContext"
 
-function CarritoItem({imagen,nombre,cantidad,precio}){
+function CarritoItem({imagen,nombre,cantidad,precio,id}){
+    //const producto={imagen,nombre,cantidad,precio,id}
+    const {removeItem}=useCart()
+    
     return(
         <div className="carritoItem">
             <div className="carritoItemImgHolder">
@@ -9,8 +13,13 @@ function CarritoItem({imagen,nombre,cantidad,precio}){
             <p>$ {precio} </p>
             <p>{cantidad} </p>
             <p>$ {cantidad*precio} </p>
+            <button className="btnEliminar" onClick={()=>removeItem(id)} >X</button>
         </div>
     )
 }
 
 export default CarritoItem
+
+/*
+
+*/
