@@ -28,7 +28,7 @@ b2aa8e-0c1b33-7a306c-03b5aa-dbfe87
 
 body {
   font-family: 'Helvetica', sans-serif;
-  background-color: #f4f4f4;
+  background-color: var(--col-5);
 }
 
 /*HEADER*/
@@ -86,11 +86,15 @@ body {
   height: 55vh;
   width: 20%;
   max-width: 30%;
-  background-color: var(--col-5);
+  background-color: var(--col-w);
   border: 3px solid var(--col-w);
   border-radius: 0px 10px 15px 15px;
   margin:  0 0.125rem 0.25rem 0.125rem;
   padding: 0 0 0.1rem 0;
+}
+.listaProdItem:hover{
+  scale: 1.03;
+  transition: 750ms;
 }
 .itemImgHolder{
   background-color: var(--col-w);
@@ -333,11 +337,32 @@ const formStyle ={
 .formAlta{
   display: flex;
   flex-direction: column;
-  background-color: var(--col-5);
+  background-color: var(--col-4);
   max-width: 24rem;
   margin: 3rem auto;
   padding: 1.5rem;
-  border: 3px solid var(--col-2);
+  border: 3px solid var(--col-5);
   border-radius: 10px;
   gap: 16px;
 }
+.btnForm{
+  background-color: var(--col-2);
+  border: 3px solid var(--col-2);
+  border-radius: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.125rem;
+}
+.btnForm:hover{
+  scale: 1.05;
+  transition: 750ms;
+}
+/*
+background-color: var(--col-3);
+  color: var(--col-w);
+  border: 3px solid var(--col-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.125rem;
+  */

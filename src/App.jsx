@@ -5,6 +5,8 @@ import Productos from "./components/Productos/Productos"
 import Carrito from "./components/Carrito"
 import UnicoProducto from "./components/Productos/UnicoProducto"
 import AltaProducto from "./components/Productos/AltaProducto"
+import ProductosNacionales from "./components/ProductosNacionales"
+import UnicoProductoNac from "./components/UnicoProductoNac"
 //import FormularioContainer from "./components/FormularioContainer"
 
 
@@ -17,6 +19,8 @@ function App(){
           <Route path="/contacto" element={<h1>Contacto...EN DESARROLLO</h1> } />
           <Route path="/productos/" element={<Productos/>} />
           <Route path="/producto/:id" element={<UnicoProducto />} />
+          <Route path="/productosNac/" element={<ProductosNacionales/>} />
+          <Route path="/productosNac/:id" element={<UnicoProductoNac/>} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/alta" element={<AltaProducto />} /> 
         </Route>

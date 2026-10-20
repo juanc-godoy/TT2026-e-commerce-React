@@ -10,6 +10,7 @@ function Navbar(){
                 <li className="navItem"><Link className="link" to="/">Inicio</Link></li>
                 <li className="navItem"><Link className="link" to="/contacto">Contacto</Link></li>
                 <li className="navItem"><Link className="link" to="/productos">Productos</Link></li>
+                <li className="navItem"><Link className="link" to="/productosNac">Productos Nacionales</Link></li>
                 <li className="navItem"><Link className="link" to="/alta">Alta</Link></li>
                 <li className="navItem">
                     <Link className="link" to="/carrito">Carrito{totalItems > 0

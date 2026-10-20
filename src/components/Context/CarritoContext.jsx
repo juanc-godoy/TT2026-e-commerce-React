@@ -43,7 +43,7 @@ export const CarritoProvider= ({children}) =>{
 
     const getCantidadActual=(productoId)=>{
         const item= carrito.find(item=>item.id===productoId)
-        return item 
+        return item
         ? item.cantidad
         : 0
     }
@@ -51,8 +51,11 @@ export const CarritoProvider= ({children}) =>{
         const updatedCarrito= carrito.filter(item=>item.id!==productId)
         setCarrito(updatedCarrito)
     }
+    const isInCarrito=(productId)=>{
+        return carrito.some(item=> item.id===productId)
+    }
     return(
-        <CarritoContext.Provider value={{carrito, addToCarrito, clearCarrito, cantidadEnCarrito, totalCarrito,getCantidadActual,removeItem}} >
+        <CarritoContext.Provider value={{carrito, addToCarrito, clearCarrito, cantidadEnCarrito, totalCarrito, getCantidadActual, removeItem, isInCarrito}} >
             {children}
         </CarritoContext.Provider>
     )
@@ -61,7 +64,7 @@ export const CarritoProvider= ({children}) =>{
 
 
 /*
-const removeItem = (productId) => {
-const updatedCart = cart.filter(item => item.id !== productId);
-setCart(updatedCart);
+const isInCart = (productId) => {
+return cart.some(item => item.id === productId);
+}
 */

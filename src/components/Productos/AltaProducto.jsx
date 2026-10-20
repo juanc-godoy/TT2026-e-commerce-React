@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FormularioProducto } from "../FormularioProducto/FormularioProducto"
+import { db } from "../../firebase/config.js"
+import { collection,addDoc } from "firebase/firestore";
 
 
 export function AltaProducto(){
@@ -7,6 +9,7 @@ export function AltaProducto(){
         nombre: '',
         precio: '',
         stock: '',
+        categoria: ''
     })
 
     const [imagenFile,setImagenFile]=useState(null)
@@ -25,7 +28,6 @@ export function AltaProducto(){
 
     const manejarEnvio= async(evento)=>{
         setLoading(true)
-        console.log("loading:",loading)
         evento.preventDefault()
         if (!imagenFile){
             alert("Por favor, selecciona una imagen para el producto")
@@ -47,7 +49,10 @@ export function AltaProducto(){
                     ...datosForm,
                     urlImagen: datosImgbb.data.url
                 }
-                console.log("Enviando los siguientes datos a la API,", productoCompleto)
+                console.log("Enviando los siguientes datos a Firebase,", productoCompleto)
+                const productsCollection=collection(db, "productos nacionales")
+                await addDoc(productsCollection, productoCompleto)
+                console.log(productoCompleto)
             }
             else{
             throw new Error('La subida de la imagen a Imgbb falló.');
@@ -59,7 +64,6 @@ export function AltaProducto(){
             }
         finally{
             setLoading(false)
-            console.log("loading:",loading)
         }  
         }
         
