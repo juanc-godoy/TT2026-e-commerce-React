@@ -12,6 +12,7 @@ function Navbar(){
                 <li className="navItem"><Link className="link" to="/productos">Productos</Link></li>
                 <li className="navItem"><Link className="link" to="/productosNac">Productos Nacionales</Link></li>
                 <li className="navItem"><Link className="link" to="/alta">Alta</Link></li>
+                <li className="navItem"><Link className="link" to="/gestion">Gestion</Link></li>
                 <li className="navItem">
                     <Link className="link" to="/carrito">Carrito{totalItems > 0
                         ? <span className='numerito'>{totalItems}</span>

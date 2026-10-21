@@ -7,6 +7,7 @@ import UnicoProducto from "./components/Productos/UnicoProducto"
 import AltaProducto from "./components/Productos/AltaProducto"
 import ProductosNacionales from "./components/ProductosNacionales"
 import UnicoProductoNac from "./components/UnicoProductoNac"
+import Gestion from "./components/Gestion/Gestion"
 //import FormularioContainer from "./components/FormularioContainer"
 
 
@@ -23,6 +24,7 @@ function App(){
           <Route path="/productosNac/:id" element={<UnicoProductoNac/>} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/alta" element={<AltaProducto />} /> 
+          <Route path="/gestion" element={<Gestion />} /> 
         </Route>
       </Routes>
     </>
