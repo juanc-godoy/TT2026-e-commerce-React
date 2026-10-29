@@ -33,12 +33,3 @@ function App(){
 }
 
 export default App
-
-/*
-  <Layout>
-        <h1 className= "titulo" >¡Bienvenidos a mi página!</h1>
-        <p className= "titulo" >Este es el contenido principal</p>
-        <Productos />
-        <FormularioContainer />
-  </Layout>
-*/

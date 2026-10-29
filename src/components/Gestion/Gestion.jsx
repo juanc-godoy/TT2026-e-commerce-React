@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
-import FormularioContainer from "../FormularioContainer.jsx"
+import AltaProducto from "../Productos/AltaProducto.jsx";
 import { db } from "../../firebase/config.js"
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 
 const Gestion= ()=>{
     const [productos, setProductos]= useState([])
-    const estadoInicialForm = {
-        nombre: "",
-        categoria:"",
-        precio: 0,
-        stock: 0,
-        imagenUrl: ""
-        };
+    const [itemAEditar, setItemAEditar]=useState(null)
+    const [modal,setModal]=useState(false)
+    const [esEdicion, setEsEdicion]= useState(false)
+    
     useEffect(()=>{
         const fetchProductos= async()=>{
             const productosRef= collection(db, "productos nacionales",)
@@ -20,32 +17,70 @@ const Gestion= ()=>{
         }
         fetchProductos()
     },[productos])
-    const handleDelete= async (id)=>{
+
+    const manejarDelete= async (id)=>{
         const confirmacion= window.confirm("Eliminar producto. Esta seguro?")
         if (confirmacion){
             const docRef= doc(db, "productos nacionales", id)
             await deleteDoc(docRef)
             setProductos(productos.filter(prod=> prod.id !== id))
             alert("Producto eliminado")
+            }
         }
+    
+    const manejarClickEdit= (item)=> {
+        setEsEdicion(true)
+        setItemAEditar(item)
+        setModal(true)
+        console.log("esedicion: ",esEdicion,"modal: ",modal,"item: ",item ,typeof(item))
     }
 
     return(
         <div>
-            <h2>Gestion de Productos</h2>
-            <hr />
-            <FormularioContainer datosForm= {estadoInicialForm} />
-            <hr />
-            <h3>Lista de Productos</h3>
-            <ul>
-                {productos.map(prod=>(
-                    <li key={prod.id}>
-                        {prod.nombre} - ${prod.precio}
-                        <p>Botones van aquí</p>
-                        <button onClick={()=>handleDelete(prod.id)}>Eliminar</button>
-                    </li>
-                ))}
-            </ul>
+            {modal
+                ? <AltaProducto
+                    esEdicion={esEdicion}
+                    setEsEdicion={setEsEdicion}
+                    itemAEditar={itemAEditar}
+                    setItemAEditar={setItemAEditar}
+                    modal={modal}
+                    setModal={setModal} />
+                : <span></span>
+            }
+            <div>
+                <h2>Gestion de Productos</h2>
+                {productos<=0
+                ? <h2>No hay productos para mostrar</h2>
+                : <table className="gestionTabla">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productos.map(prod=>(
+                            <tr key={prod.id}>
+                                <td>
+                                    <img src={prod.imagen||prod.urlImagen}alt={prod.nombre} width="100px" />
+                                </td>
+                                <td>{prod.nombre} </td>
+                                <td>{prod.categoria} </td>
+                                <td>{prod.precio} </td>
+                                <td>
+                                    <button onClick={()=>manejarClickEdit(prod)}>Editar</button>
+                                    <button onClick={()=>manejarDelete(prod.id)}>Eliminar</button>
+                                </td>
+                            </tr>
+                        )
+                        )}
+                    </tbody>
+                </table>
+                }
+            </div>
         </div>
     )
 }

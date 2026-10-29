@@ -1,9 +1,12 @@
 //import React from "react";
 
-export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejarCambioImagen,loading}){
+export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejarCambioImagen,loading,cancelarEdicion,esEdicion,itemAEditar}){
     return (
         <form className="formAlta" onSubmit={manejarEnvio}>
-            <h3>Agregar Nuevo Producto</h3>
+            {esEdicion
+            ? <h3>Editar Producto</h3>
+            : <h3>Agregar Nuevo Producto</h3>
+            }
             <div>
                 <label>Nombre del Producto:</label>
                 <input name="nombre" type="text" placeholder="Ej: Teclado Mecánico"
@@ -14,7 +17,7 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
             <div>
                 <label>Categoría:</label>
                 <select name="categoria"
-                value={datosForm.categoria|| ""}
+                value={datosForm.categoria}
                 onChange={manejarCambio}
                 >
                 <option value="" disabled>Selecciona categoría</option>
@@ -39,12 +42,16 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
             </div>
             <div>
                 <label>Imagen:</label>
-                <input name="urlImagen" type="file" placeholder="https://…"
-                value={datosForm.imagen}
+                <input name="imagenUrl" type="file" placeholder="https://…"
+                value={datosForm.imagenUrl}
                 onChange={manejarCambioImagen}
                 />
             </div>
             {loading ? <div> Cargando...</div> : <button className="btnForm" type="submit"> Guardar Producto</button>}
+            {itemAEditar
+            ? <button onClick={()=>cancelarEdicion}>Cancelar Edicion</button>
+            : <span></span>
+            }
         </form>
     )
 }
