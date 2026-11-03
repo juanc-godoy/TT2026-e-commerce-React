@@ -8,6 +8,7 @@ import AltaProducto from "./components/Productos/AltaProducto"
 import ProductosNacionales from "./components/ProductosNacionales"
 import UnicoProductoNac from "./components/UnicoProductoNac"
 import Gestion from "./components/Gestion/Gestion"
+import Login from "./components/Login/Login"
 //import FormularioContainer from "./components/FormularioContainer"
 
 
@@ -25,6 +26,7 @@ function App(){
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/alta" element={<AltaProducto />} /> 
           <Route path="/gestion" element={<Gestion />} /> 
+          <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
     </>

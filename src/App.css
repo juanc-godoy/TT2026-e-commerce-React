@@ -57,12 +57,20 @@ body {
   display: flex;
   justify-content: space-around;
 }
-.navItem{
-  padding: 0.25rem;
-  text-decoration: none;
+.navItemContainer>p{
+  color: var(--col-w);
+  align-self: center;
+  padding: 0 0.2rem;
 }
+.navItem{
+  padding: 0.15rem 0.20rem;
+  text-decoration: none;
+  color: var(--col-w);
+}
+
 .navItem:hover{
   transform: scale(1.1);
+  transition: 500ms;
 }
 .link{
   color: var(--col-w);
@@ -74,6 +82,19 @@ body {
   border: 1px solid var(--col-w);
   font-weight: 600;
   padding: 0.1rem;
+}
+.userOptions{
+  padding: 0.2rem;
+}
+.btnLogout{
+  height: 60%;
+  border-radius: 5px;
+  background-color: var(--col-w);
+  color: var(--col-1);
+  border: 1px solid var(--col-w);
+  font-weight: 600;
+  padding: 0.1rem;
+  margin: auto 0;
 }
 /* LAYOUT-OUTLET*/
 
@@ -250,8 +271,8 @@ body {
   max-width: 100%;
 }
 .btnEliminar{
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   background-color: var(--col-r);
   color: var(--col-w);
   border: none ;
@@ -273,12 +294,12 @@ body {
   padding: 0.25rem 0 0 0;
 }
 .btnVaciar{
-  background-color: var(--col-1);
-  color: var(--col-w);
+  background-color: var(--col-w);
+  color: var(--col-1);
   border: 3px solid var(--col-1);
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 0.125rem;
 }
 .btnComprar{
@@ -301,7 +322,12 @@ body {
   background-color: var(--col-w);
   /* border: 3px solid var(--col-2); */
   border-radius: 0px 10px 10px 10px;
-  margin: 0.5rem auto
+  margin: 0.5rem auto;
+  box-shadow: 3px 5px 10px 0px var(--col-4);
+}
+.unicoProducto:hover{
+  box-shadow: 3px 5px 10px 0px var(--col-w);
+  transition: 1000ms;
 }
 /*
 display: flex;
@@ -360,16 +386,30 @@ const formStyle ={
   border-radius: 10px;
   gap: 16px;
 }
-.btnForm{
-  background-color: var(--col-2);
-  border: 3px solid var(--col-2);
-  border-radius: 5px;
+.btnFormSubmit{
+  background-color: var(--col-1);
+  border: 3px solid var(--col-1);
+  color: var(--col-w);
+  border-radius: 10px;
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.125rem;
 }
-.btnForm:hover{
-  scale: 1.05;
+.btnFormSubmit:hover{
+  box-shadow: 3px 5px 10px 0px var(--col-4);
+  transition: 750ms;
+}
+.btnFormCancelar{
+  background-color: var(--col-w);
+  border: 3px solid var(--col-1);
+  color: var(--col-1);
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.125rem;
+}
+.btnFormCancelar:hover{
+  box-shadow: 3px 5px 10px 0px var(--col-4);
   transition: 750ms;
 }
 /*
@@ -385,4 +425,34 @@ background-color: var(--col-3);
 .gestionTabla{
   background-color: var(--col-w);
   width: 80%;
+}
+.btnGestionEliminar{
+  background-color: var(--col-w);
+  color: var(--col-bor);
+  border: 2px solid var(--col-bor);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.125rem;
+  margin: 0 0.125rem;
+}
+.btnGestionEliminar:hover{
+  color: var(--col-b);
+  border: 2px solid var(--col-b);
+  transition: 750ms;
+}
+.btnGestionEditar{
+  background-color: var(--col-w);
+  color: var(--col-v);
+  border: 2px solid var(--col-v);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.125rem;
+  margin: 0 0.125rem;
+}
+.btnGestionEditar:hover{
+  color: var(--col-b);
+  border: 2px solid var(--col-b);
+  transition: 750ms;
 }

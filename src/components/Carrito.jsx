@@ -17,18 +17,22 @@ function Carrito(){
 
     return(
         <div className="carritoContainer">
-            <div className="carritoTop" >
-                <p>Foto</p>
-                <p>Item</p>
-                <p>P.Unitario</p>
-                <p>Cantidad</p>
-                <p>Subtotal</p>
-            </div>
-            <div className="carrito" >
+            <thead>
+                <tr className="carritoTop" >
+                    <th>Foto</th>
+                    <th>Item</th>
+                    <th>Precio Unit.</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            
+            <tbody className="carrito" >
                 {carrito.map(item =>(
                     < CarritoItem key={item.id} {...item} />
                     ))}
-            </div>
+            </tbody>
             <div className="carritoBottom" >
                 <button onClick={clearCarrito} className="btnVaciar">Vaciar Carrito</button>
                 <h3>Total a pagar: ${totalCarrito()} </h3>

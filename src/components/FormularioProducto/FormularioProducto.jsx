@@ -3,7 +3,7 @@
 export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejarCambioImagen,loading,cancelarEdicion,esEdicion,itemAEditar}){
     return (
         <form className="formAlta" onSubmit={manejarEnvio}>
-            {esEdicion
+            {itemAEditar
             ? <h3>Editar Producto</h3>
             : <h3>Agregar Nuevo Producto</h3>
             }
@@ -42,14 +42,20 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
             </div>
             <div>
                 <label>Imagen:</label>
-                <input name="imagenUrl" type="file" placeholder="https://…"
-                value={datosForm.imagenUrl}
+                <input name="imagen" type="file" placeholder="https://…"
+                //value={datosForm.imagenUrl}
                 onChange={manejarCambioImagen}
                 />
+                {esEdicion&&datosForm.imagen&&
+                <div>
+                    <p>Imagen Actual</p>
+                    <img src={datosForm.imagen} alt="Vista Previa" width="100px"/>
+                </div>
+                }
             </div>
-            {loading ? <div> Cargando...</div> : <button className="btnForm" type="submit"> Guardar Producto</button>}
+            {loading ? <div> Cargando...</div> : <button className="btnFormSubmit" type="submit"> Guardar Producto</button>}
             {itemAEditar
-            ? <button onClick={()=>cancelarEdicion}>Cancelar Edicion</button>
+            ? <button type="button" className="btnFormCancelar" onClick={cancelarEdicion}>Cancelar Edicion</button>
             : <span></span>
             }
         </form>

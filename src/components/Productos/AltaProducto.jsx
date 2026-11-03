@@ -11,16 +11,16 @@ const estadoInicialForm = {
         imagenUrl: ""
         };
 
-export function AltaProducto(esEdicion,setEsEdicion,itemAEditar,setItemAEditar, modal, setmodal){
+export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar, modal, setModal}){
     const [datosForm, setDatosForm]= useState(estadoInicialForm)
     const [imagenFile ,setImagenFile]=useState(null)
     const [loading, setLoading]=useState(false)
 
     useEffect(()=> {
-        if (itemAEditar){
+        if (esEdicion&&itemAEditar){
             setDatosForm(itemAEditar)
         }
-    },[itemAEditar])
+    },[esEdicion,itemAEditar])
 
     const manejarCambio= (evento)=>{
     const {name, value}= evento.target
@@ -30,21 +30,54 @@ export function AltaProducto(esEdicion,setEsEdicion,itemAEditar,setItemAEditar, 
     }
 
     const manejarCambioImagen= (evento)=>{
-        setImagenFile(evento.target.files[0])
+        const archivo=evento.target.files[0]
+        setImagenFile(archivo)
     }
 
+    /*
+    const subirImagenAImgbb= async(archivo)=>{
+        const formData= new FormData()
+        formData.append("imagen",archivo)
+        const apiKey= import.meta.env.VITE_API_KEY
+        try{
+            console.log("Subiendo imagen a Imgbb...")
+            const respuestaImgbb= await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,{
+                method: "POST",
+                 body: formData,
+                })
+            const datosImgbb= await respuestaImgbb.json()
+                if (datosImgbb.success){
+                    return datosImgbb.data.url
+                } else {
+                    throw new Error('Fallo al subir la imagen a Imgbb.')
+                }
+        }
+        catch (error){
+            console.error("Error en el proceso de envío:", error)
+            alert("Error al subir la imagen. Por favor, intentá de nuevo.")
+            return
+        }
+        finally{
+            console.log("llegamos al finally")
+        } 
+    }//fin funcion
+    */
     const cancelarEdicion= () => {
-        setmodal(false)
-        console.log(modal)
+        setEsEdicion(false)
+        setModal(false)
     }
 
     const manejarEnvio= async(evento)=>{
             setLoading(true)
             evento.preventDefault()
-            let image = datosForm.imagen||datosForm.urlImagen;
-            if (imagenFile){
+            if (!imagenFile){
+                alert("Adjunta una imagen para continuar")
+                setLoading(false)
+                return
+            }/* else{//PRUEBA SALTEAR IMGBB
+                let imagen = datosForm.imagenUrl||"";
                 const formData= new FormData()
-                formData.append("imagenUrl",imagenFile)
+                formData.append("image",imagenFile)
                 const apiKey= import.meta.env.VITE_API_KEY
                 try{
                     console.log("Subiendo imagen a Imgbb...")
@@ -53,11 +86,10 @@ export function AltaProducto(esEdicion,setEsEdicion,itemAEditar,setItemAEditar, 
                         body: formData,
                     })
                     const datosImgbb= await respuestaImgbb.json()
-                    if (datosImgbb.success){
-                        image=datosImgbb.data.url
-                    } else {
+                    if (!respuestaImgbb.ok||!datosImgbb.success){
                         throw new Error('La subida de la imagen a Imgbb falló.')
                     }
+                    imagen= datosImgbb.data.url
                 }
                 catch (error){
                     console.error("Error en el proceso de envío:", error)
@@ -66,9 +98,19 @@ export function AltaProducto(esEdicion,setEsEdicion,itemAEditar,setItemAEditar, 
                     }
                 finally{
                     setLoading(false)
-                } 
-                const productoFinal={...datosForm, imagenUrl: image}
-                console.log(productoFinal)
+                }  */
+                let imagen="lapirru.com"
+                //const productoFinal={...datosForm, imagenUrl: imagen}
+                console.log("antes normalizar", datosForm)
+                const productoFinal = {
+                    //...datosForm,
+                    precio: Number(datosForm.precio),
+                    stock: Number(datosForm.stock),
+                    categoria: datosForm.categoria.trim().toLowerCase(),
+                    imagenUrl: imagen
+                    };
+                
+                console.log("dsps normalizar",productoFinal)
                 try{
                     if (itemAEditar){
                         const docRef=doc(db,"productos nacionales",itemAEditar.id)
@@ -84,12 +126,9 @@ export function AltaProducto(esEdicion,setEsEdicion,itemAEditar,setItemAEditar, 
                     console.error("Error:", error);
                 }
                 finally{
-                    //
+                    setLoading(false)
                 }
-            }else{
-                alert("Adjunta una imagen para continuar")
-                return
-            }//aqui finaliza el if(imagenfile)    
+            //aqui finalizaBA el if(imagenfile)    
         }
     
     return (
