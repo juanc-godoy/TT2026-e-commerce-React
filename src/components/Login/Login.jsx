@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { Link } from "react-router-dom"
 
 const Login=() => {
     const [email, setEmail]= useState("")
@@ -40,6 +41,7 @@ const Login=() => {
                 />
                 <button type="submit" >Ingresar</button>
             </form>
+            <p>¿No tenés una cuenta? <Link to="/registro">Registrate aquí</Link></p>
         </div>
     )
 }
