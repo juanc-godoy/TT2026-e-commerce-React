@@ -6,23 +6,13 @@ export function Favorito(){
         favOrNot(!esFav)
         }
     return (
-        <div>
-            {esFav ? "Quitar favorito" : "Agregar a favoritos"}
-            <span onClick={clickFav} style={{ fontSize: '24px'}}>
-                {esFav ? '⭐' : '☆'}  
-            </span>  
-        </div>
+        <span onClick={clickFav} >
+            {esFav ? '⭐' : '☆'}
+        </span>
         
     )
 }
 
 /*
-style={{ fontSize: '24px'}}
-if (esFav===false){
-            favOrNot(esFav===true)
-            //alert("Marcado como Favorito")   
-        }
-        else if(esFav===true){
-            favOrNot(esFav===false)
-            //alert("Desmarcado")
+
 */

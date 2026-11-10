@@ -15,17 +15,17 @@ export const useCart= ()=>{
 export const CarritoProvider= ({children}) =>{
     const [carrito, setCarrito]= useState([])
 
-    const addToCarrito= (producto,cantidad)=>{
-        const itemInCarrito= carrito.find(item=> item.id=== producto.id)
+    const addToCarrito= (agregado)=>{
+        const itemInCarrito= carrito.find(item=> item.id=== agregado.id)
         if (itemInCarrito){
             const updatedCarrito= carrito.map(item=>
-                item.id===producto.id
-                ?{...item, cantidad: item.cantidad+cantidad}
+                item.id===agregado.id
+                ?{...item, cantidad: item.cantidad+1}
                 : item
             );
             setCarrito(updatedCarrito)
         }else{
-            setCarrito(prevCarrito=>[...prevCarrito,{...producto, cantidad}])
+            setCarrito(prevCarrito=>[...prevCarrito,{...agregado, cantidad: 1}])
         }
     }
 

@@ -96,30 +96,31 @@ body {
   padding: 0.1rem;
   margin: auto 0;
 }
+
 /* LAYOUT-OUTLET*/
 
 .listaProd{
   display: flex;
   flex-wrap: wrap;
-  max-width: 80%;
-  margin: 0.5rem auto;
+  max-width: 90%;
+  margin: 0.25rem auto;
 }
-.listaProdItem{
+.item{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   /* text-align: left ; */
-  height: 55vh;
-  width: 20%;
+  height: 50vh;
+  /* width: 20%; */
   max-width: 30%;
   background-color: var(--col-w);
   border: 3px solid var(--col-w);
-  border-radius: 0px 10px 15px 15px;
+  border-radius: 0px 10px 5px 5px;
   margin:  0 0.125rem 0.25rem 0.125rem;
-  padding: 0 0 0.1rem 0;
+  padding: 0.2rem 0 0.1rem 0rem;
 }
-.listaProdItem:hover{
+.item:hover{
   box-shadow: 3px 5px 10px 0px var(--col-4);
   /* scale: 1.03;*/
   transition: 750ms; 
@@ -129,7 +130,7 @@ body {
   overflow: hidden;
   object-fit: cover;
   width: 100%;
-  height: 40%;
+  height: 55%;
 }
 .itemImg{
   width: 100%;
@@ -142,14 +143,25 @@ body {
   justify-content: space-between;
   margin: 0%;
 }
+.itemInfo h5, h6{
+  color: var(--col-4);
+}
+.itemInfoData{
+  text-align: left;
+  padding: 0 0 0 0.5rem;
+}
+.itemInfoData>a:visited {
+   color: var(--col-b);
+}
 .agregarButton{
   text-transform: uppercase;
   background-color: var(--col-1);
-  width: 90%;
+  width: 95%;
+  height: 2rem;
   color: var(--col-w);
   border: 2px solid var(--col-1);
   font-weight:600;
-  border-radius: 10px;
+  border-radius: 0 0 5px 5px;
   padding: 0.125rem;
 }
 .agregarButton:hover{
@@ -182,28 +194,57 @@ body {
 .footer{
 /*   background-color: var(--col-4);*/
   background: linear-gradient(var(--col-4),var(--col-1));
-  padding: 10px;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
   text-align: center;
-  margin-top: 20px;
   color: var(--col-w);
+  display: flex;
+  flex-direction: column;
+}
+.footerSection{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+}
+.footerSectionA{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footerSectionB{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
 }
 .footerItem{
   color: var(--col-w);
 }
+.footerFin{
+  padding: 0.5rem 0rem;
+  color: var(--col-4);
+}
 .nosotrosContainer{
+  width: 100%;
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .tarjetaDeContacto{
   background-color: var(--col-2);
+  color: var(--col-b);
   display: flex;
-  flex-direction: column;border-radius: 10%;
+  flex-direction: column;
+  border-radius: 5px 5px 3px 3px;
   justify-content: space-between;
   overflow: hidden;
   width: 15vw;
-  height: 35vh;
+  height: 70vh;
   /* border: 3px solid var(--col-2); */
   margin: 0.25rem;
+  padding-bottom: 0.2rem;
+  box-shadow: 3px 5px 10px 0px var(--col-4);;
 }
 .tarjImgHolder{
   background-color: var(--col-w);
@@ -211,7 +252,7 @@ body {
   padding: 0%;
   margin: 0%;
   width: 100%;
-  height: 60%;
+  height: 70%;
 }
 .tarjImg{
   width: 100%;
@@ -219,7 +260,9 @@ body {
   /* aspect-ratio: 4 / 3; */
   object-fit: cover;
 }
+
 /* CARRITO */
+
 .carritoContainer{
   display: flex;
   flex-direction: column;

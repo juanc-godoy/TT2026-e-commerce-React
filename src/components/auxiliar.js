@@ -1,9 +1,18 @@
-/* console.log("Enviando los siguientes datos a Firebase,", productoCompleto)
-                
-                    const productsCollection=collection(db, "productos nacionales")
-                await addDoc(productsCollection, productoCompleto)
-                console.log(productoCompleto)
-                alert("Producto agregado", productoCompleto) */
+/* ADDTOCARRITO PREVIO, CON MULTIPLES UNIDADES
+const addToCarrito= (producto,cantidad)=>{
+        const itemInCarrito= carrito.find(item=> item.id=== producto.id)
+        if (itemInCarrito){
+            const updatedCarrito= carrito.map(item=>
+                item.id===producto.id
+                ?{...item, cantidad: item.cantidad+cantidad}
+                : item
+            );
+            setCarrito(updatedCarrito)
+        }else{
+            setCarrito(prevCarrito=>[...prevCarrito,{...producto, cantidad}])
+        }
+    }
+*/
 
 
 //manejar envio anterior ABAJO
@@ -88,3 +97,52 @@ const subirImagenImgbb = async (file) => {
     return datos.data.url;
   };
 */
+
+function devolverRandoms(){
+    const randoms=[]
+    while (randoms.length<=2){
+        const newEntero=Math.floor(Math.random() * 10);
+
+        if (!randoms.includes(newEntero)){
+        randoms.push(newEntero)
+        }
+    }
+    return randoms
+}
+
+devolverRandoms()
+
+const frutas = ["manzana", "banana", "naranja", "pera", "uva", "durazno", "frutilla", "pomelo", "kiwi", "anana"];
+
+const randoms=devolverRandoms()
+console.log("randoms: ",randoms)
+
+console.log(frutas[randoms[0]])
+console.log(frutas[randoms[1]])
+console.log(frutas[randoms[2]])
+/*
+else{//PRUEBA SALTEAR IMGBB
+                let imagen = datosForm.imagenUrl||"";
+                const formData= new FormData()
+                formData.append("image",imagenFile)
+                const apiKey= import.meta.env.VITE_API_KEY
+                try{
+                    console.log("Subiendo imagen a Imgbb...")
+                    const respuestaImgbb= await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,{
+                        method: "POST",
+                        body: formData,
+                    })
+                    const datosImgbb= await respuestaImgbb.json()
+                    if (!respuestaImgbb.ok||!datosImgbb.success){
+                        throw new Error('La subida de la imagen a Imgbb falló.')
+                    }
+                    imagen= datosImgbb.data.url
+                }
+                catch (error){
+                    console.error("Error en el proceso de envío:", error)
+                    alert("Error al subir la imagen. Por favor, intentá de nuevo.")
+                    return
+                    }
+                finally{
+                    setLoading(false)
+                }  */

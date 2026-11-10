@@ -74,36 +74,40 @@ export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar,
                 alert("Adjunta una imagen para continuar")
                 setLoading(false)
                 return
-            }/* else{//PRUEBA SALTEAR IMGBB
-                let imagen = datosForm.imagenUrl||"";
-                const formData= new FormData()
-                formData.append("image",imagenFile)
-                const apiKey= import.meta.env.VITE_API_KEY
-                try{
-                    console.log("Subiendo imagen a Imgbb...")
-                    const respuestaImgbb= await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,{
+            }else{//PRUEBA SALTEAR IMGBB/Freeimage.host
+                /* let imagen = datosForm.imagenUrl || "";
+                const formData = new FormData();
+                formData.append("source", imagenFile);
+                formData.append("key", import.meta.env.VITE_API_KEY);
+                formData.append("format", "json");
+
+                try {
+                    console.log("Subiendo imagen a Freeimage.host...");
+                    const respuestaAPI = await fetch("https://freeimage.host/api/1/upload", {
                         method: "POST",
                         body: formData,
-                    })
-                    const datosImgbb= await respuestaImgbb.json()
-                    if (!respuestaImgbb.ok||!datosImgbb.success){
-                        throw new Error('La subida de la imagen a Imgbb falló.')
-                    }
-                    imagen= datosImgbb.data.url
-                }
-                catch (error){
-                    console.error("Error en el proceso de envío:", error)
-                    alert("Error al subir la imagen. Por favor, intentá de nuevo.")
-                    return
-                    }
-                finally{
-                    setLoading(false)
-                }  */
-                let imagen="lapirru.com"
+                        });
+
+                    const datosRespuesta = await respuestaAPI.json();
+
+                    if (!respuestaAPI.ok || datosRespuesta.status_code !== 200) {
+                        throw new Error('La subida de la imagen a Freeimage.host falló.');
+                        }
+                    imagen = datosRespuesta.image.url;
+                } catch (error) {
+                    console.error("Error en el proceso de envío:", error);
+                    alert("Error al subir la imagen. Por favor, intentá de nuevo.");
+                    return;
+                } finally {
+                    setLoading(false);
+                    } */
+                
+                let imagen="...URL PENDIENTE..."
                 //const productoFinal={...datosForm, imagenUrl: imagen}
                 console.log("antes normalizar", datosForm)
                 const productoFinal = {
                     //...datosForm,
+                    nombre: datosForm.nombre,
                     precio: Number(datosForm.precio),
                     stock: Number(datosForm.stock),
                     categoria: datosForm.categoria.trim().toLowerCase(),
@@ -128,9 +132,8 @@ export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar,
                 finally{
                     setLoading(false)
                 }
-            //aqui finalizaBA el if(imagenfile)    
-        }
-    
+            }//aqui finalizaBA el if(imagenfile)
+    }
     return (
         <FormularioProducto
         datosForm={datosForm}
@@ -143,7 +146,6 @@ export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar,
         itemAEditar={itemAEditar}
         //setItemAEditar={setItemAEditar}
         />
-        )    
-    }
-    
+        )
+}
 export default AltaProducto

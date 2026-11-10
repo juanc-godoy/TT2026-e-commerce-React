@@ -112,16 +112,16 @@ code {
 f45b69-f6e8ea-22181c-5a0001-f13030 en uso
 8b94a3-8cfbde-0fff95-06ba63-103900
 */
-:root{
+/* :root{
   --col-1: #f13030;
   --col-2: #5a0001;
   --col-3: #f45b69;
   --col-4: #f6e8ea;
   --col-5: #22181c;
 }
+ */
 
-
-*{
+/* *{
   margin:0;
   padding: 0;
   box-sizing: content-box;
@@ -132,9 +132,9 @@ body {
   font-family: 'Helvetica', sans-serif;
   margin: 0;
   background-color: #f4f4f4;
-}
+} */
 
-h1, h2, h3, p {
+/* h1, h2, h3, p {
   color:black;
   font-size: 16px;
-}
+} */

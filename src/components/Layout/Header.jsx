@@ -3,7 +3,7 @@ import Navbar from "./Navbar"
 function Header(){
     return (
         <header className="header">
-            <h1 className="headerItem">Bienvenidos a mi App React</h1>
+            <h4 className="headerItem">Bienvenidos a mi App React</h4>
             <Navbar/>
         </header>
     )
