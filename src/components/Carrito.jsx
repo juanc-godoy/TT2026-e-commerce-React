@@ -4,7 +4,8 @@ import { Link } from "react-router-dom"
 
 function Carrito(){
     const {carrito, clearCarrito, totalCarrito}= useCart()
-    
+    const totalFormato=new Intl.NumberFormat('es-AR').format(totalCarrito());
+
     if (carrito.length===0){
         return(
             <div className="carritoContainer">
@@ -27,15 +28,14 @@ function Carrito(){
                     <th>Accion</th>
                 </tr>
             </thead>
-            
-            <tbody className="carrito" >
-                {carrito.map(item =>(
-                    < CarritoItem key={item.id} {...item} />
-                    ))}
-            </tbody>
+                <tbody className="carrito" >
+                    {carrito.map(item =>(
+                        <CarritoItem key={item.id} {...item} />
+                        ))}
+                </tbody>
             <div className="carritoBottom" >
                 <button onClick={clearCarrito} className="btnVaciar">Vaciar Carrito</button>
-                <h3>Total a pagar: ${totalCarrito()} </h3>
+                <h3>Total a pagar: ${totalFormato} </h3>
                 <button className="btnComprar" >Continuar compra</button>
             </div>
         </div>

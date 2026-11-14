@@ -146,3 +146,14 @@ else{//PRUEBA SALTEAR IMGBB
                 finally{
                     setLoading(false)
                 }  */
+
+/*
+DAR FORMATO A PRECIOS...PROBAR
+const numero = 1234567.89;
+
+// Formato para español (ej. Argentina o España)
+const formateado = new Intl.NumberFormat('es-AR').format(numero);
+
+console.log(formateado); 
+// Resultado: "1.234.567,89"
+*/

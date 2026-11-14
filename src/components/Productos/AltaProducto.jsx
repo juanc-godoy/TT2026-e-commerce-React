@@ -66,10 +66,21 @@ export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar,
         setEsEdicion(false)
         setModal(false)
     }
-
+/*
+if (datosForm.nombre.trim() === "" || datosForm.precio <= 0) {
+alert("Por favor, complete todos los campos y asegúrese de que el
+precio sea mayor a cero.");
+return; // Detiene la ejecución de la función
+}
+*/
     const manejarEnvio= async(evento)=>{
             setLoading(true)
             evento.preventDefault()
+            if (datosForm.nombre.trim()===""||datosForm.precio<=0){
+                alert("Verifique que todos los campos estan completos y que precio sea mayor a cero")
+                setLoading(false)
+                return
+            }
             if (!imagenFile){
                 alert("Adjunta una imagen para continuar")
                 setLoading(false)

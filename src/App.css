@@ -35,6 +35,9 @@ body {
   font-family: 'Helvetica', sans-serif;
   background-color: var(--col-5);
 }
+main{
+  min-height: 75vh;
+}
 
 /*HEADER*/
 
@@ -153,7 +156,7 @@ body {
 .itemInfoData>a:visited {
    color: var(--col-b);
 }
-.agregarButton{
+.btnAgregar{
   text-transform: uppercase;
   background-color: var(--col-1);
   width: 95%;
@@ -164,7 +167,7 @@ body {
   border-radius: 0 0 5px 5px;
   padding: 0.125rem;
 }
-.agregarButton:hover{
+.btnAgregar:hover{
   background-color: var(--col-w);
   color: var(--col-1);
 }
@@ -210,7 +213,7 @@ body {
   width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly ;
 }
 .footerSectionB{
   width: 70%;
@@ -271,20 +274,20 @@ body {
 .btnToProductos{
   background-color: var(--col-1);
   color: var(--col-w);
-  border: 3px solid var(--col-1);
+  border: 2px solid var(--col-1);
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
-  padding: 0.125rem;
+  border-radius: 3px;
+  padding: 0.25rem;
 }
-.carritoTop{
+/* .carritoTop{
   display: flex;
   justify-content: space-between;
   height: 5vh;
   align-items: center;
   width: 100%;
   font-weight: 600;
-}
+} */
 .carrito{
   display: flex;
   flex-direction: column;
@@ -313,6 +316,24 @@ body {
 .carritoItemImg{
   max-width: 100%;
 }
+.carritoIncDec{
+  display: flex;
+  flex-direction: row;
+  padding: 0 0.25rem;
+  align-items: center;
+}
+.btnIncDec{
+  background-color: var(--col-1);
+  color: var(--col-w);
+  border: 2px solid var(--col-1);
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.2rem;
+  margin: 0 0.2rem;
+  &:hover{
+    scale: 1.03;
+  }
+}
 .btnEliminar{
   height: 3rem;
   width: 3rem;
@@ -322,11 +343,10 @@ body {
   border-radius: 15px;
   text-transform: uppercase;
   font-weight: 600;
-}
-.btnEliminar:hover{
-  /* scale: 1.03; */
+  &:hover{
   background-color: var(--col-b);
   transition: 1000ms;
+}
 }
 /*F06449*/
 .carritoBottom{
@@ -338,21 +358,33 @@ body {
 }
 .btnVaciar{
   background-color: var(--col-w);
-  color: var(--col-1);
-  border: 3px solid var(--col-1);
+  color: var(--col-r);
+  border: 2px dashed var(--col-r);
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 10px;
-  padding: 0.125rem;
+  border-radius: 3px;
+  padding: 0.25rem;
+}
+.btnVaciar:hover{
+  transition: 500ms;
+  background-color: var(--col-r);
+  color: var(--col-w);
+  border-color: (--col-r);
 }
 .btnComprar{
-  background-color: var(--col-3);
-  color: var(--col-w);
-  border: 3px solid var(--col-3);
+  background-color: var(--col-w);
+  color: var(--col-1);
+  border: 2px dashed var(--col-1);
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
-  padding: 0.125rem;
+  border-radius: 3px;
+  padding: 0.25rem;
+}
+.btnComprar:hover{
+  transition: 500ms;
+  background-color: var(--col-1);
+  color: var(--col-w);
+  border-color: var(--col-1);
 }
 
 /*UNICO PRODUCTO*/
@@ -403,19 +435,7 @@ display: flex;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
-/*FORMULARIO
-const formStyle ={
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "24rem",
-        margin: "3rem auto",
-        padding: "1.5rem",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-        gap: "16px"
-    }
-
-*/
+/*FORMULARIOS*/
 .formAlta{
   display: flex;
   flex-direction: column;
@@ -431,12 +451,12 @@ const formStyle ={
 }
 .btnFormSubmit{
   background-color: var(--col-1);
-  border: 3px solid var(--col-1);
+  border: 2px solid var(--col-1);
   color: var(--col-w);
-  border-radius: 10px;
+  border-radius: 3px;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 0.125rem;
+  padding: 0.25rem;
 }
 .btnFormSubmit:hover{
   box-shadow: 3px 5px 10px 0px var(--col-4);
@@ -444,30 +464,85 @@ const formStyle ={
 }
 .btnFormCancelar{
   background-color: var(--col-w);
-  border: 3px solid var(--col-1);
+  border: 2px solid var(--col-1);
   color: var(--col-1);
-  border-radius: 10px;
+  border-radius: 3px;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 0.125rem;
+  padding: 0.25rem;
 }
 .btnFormCancelar:hover{
   box-shadow: 3px 5px 10px 0px var(--col-4);
   transition: 750ms;
 }
-/*
-background-color: var(--col-3);
+.formLogin{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--col-w);
+  /* border: 3px solid var(--col-2); */
+  box-shadow: 2px 2px 10px 0px var(--col-4);
+  max-width: 24rem;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border-radius: 5px;
+  gap: 16px;
+}
+.btnLogin{
+  background-color: var(--col-1);
+  border: 2px solid var(--col-1);
   color: var(--col-w);
-  border: 3px solid var(--col-3);
+  border-radius: 3px;
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
-  padding: 0.125rem;
-  */
+  padding: 0.25rem;
+  margin: 0.25rem;
+  &:hover{
+    box-shadow: 3px 5px 10px 0px var(--col-4);
+    transition: 750ms;
+  }
+}
 
+.formRegistro{
+  /* display: flex;
+  flex-direction: column; */
+  background-color: var(--col-w);
+  /* border: 3px solid var(--col-2); */
+  box-shadow: 2px 2px 10px 0px var(--col-w);
+  max-width: 24rem;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border-radius: 5px;
+  gap: 16px;
+}
+.btnRegistro{
+  background-color: var(--col-1);
+  border: 2px solid var(--col-1);
+  color: var(--col-w);
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.20rem;
+  margin: 0.5rem;
+  &:hover{
+    box-shadow: 3px 5px 10px 0px var(--col-4);
+    transition: 750ms;}
+}
+/*GESTION*/
 .gestionTabla{
   background-color: var(--col-w);
   width: 80%;
+}
+.gestionItem{
+  height: 10vh;
+}
+.gestionImgHolder{
+  height: 95%;
+  overflow: hidden;
+  object-fit: contain;
+  aspect-ratio: 4 / 3;
+}
+.gestionImg{
+  max-width: 100px;
 }
 .btnGestionEliminar{
   background-color: var(--col-w);
@@ -475,27 +550,27 @@ background-color: var(--col-3);
   border: 2px solid var(--col-bor);
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
-  padding: 0.125rem;
+  border-radius: 3px;
+  padding: 0.25rem;
   margin: 0 0.125rem;
-}
-.btnGestionEliminar:hover{
-  color: var(--col-b);
-  border: 2px solid var(--col-b);
-  transition: 750ms;
+  &:hover{
+  background-color: var(--col-bor);
+  color: var(--col-w);
+  border-color: var(--col-bor);
+  transition: 750ms;}
 }
 .btnGestionEditar{
   background-color: var(--col-w);
   color: var(--col-v);
-  border: 2px solid var(--col-v);
+  border: 2px dashed var(--col-v);
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 5px;
-  padding: 0.125rem;
+  border-radius: 3px;
+  padding: 0.25rem;
   margin: 0 0.125rem;
-}
-.btnGestionEditar:hover{
-  color: var(--col-b);
-  border: 2px solid var(--col-b);
-  transition: 750ms;
+  &:hover{
+  background-color: var(--col-v);
+  color: var(--col-w);
+  border: 2px solid var(--col-v);
+  transition: 750ms;}
 }

@@ -46,7 +46,7 @@ const Registro=()=>{
                     />
                 </div>
                 <div className="formGroup">
-                    <label> Password</label>
+                    <label> Contraseña</label>
                     <input
                     type="password"
                     value={password}
@@ -56,7 +56,7 @@ const Registro=()=>{
                     />
                 </div>
                 {error && <p className="errorMessage">{error}</p>}
-                <button type="submit">Registrarse</button>
+                <button className="btnRegistro" type="submit">Registrarse</button>
             </form>
         </div>
     )

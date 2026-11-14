@@ -26,7 +26,7 @@ const Login=() => {
     }
 
     return (
-        <div>
+        <div className="formLogin">
             <h2>Iniciar Sesión</h2>
             <form onSubmit={handleLogin} action="">
                 <input type="email"
@@ -35,11 +35,11 @@ const Login=() => {
                 onChange={(e)=> setEmail(e.target.value)}
                 />
                 <input type="password"
-                placeholder="Constraseña"
+                placeholder="Contraseña"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 />
-                <button type="submit" >Ingresar</button>
+                <button className="btnLogin" type="submit" >Ingresar</button>
             </form>
             <p>¿No tenés una cuenta? <Link to="/registro">Registrate aquí</Link></p>
         </div>

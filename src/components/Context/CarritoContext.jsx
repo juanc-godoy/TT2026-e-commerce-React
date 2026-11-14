@@ -47,6 +47,7 @@ export const CarritoProvider= ({children}) =>{
         ? item.cantidad
         : 0
     }
+
     const removeItem=(productId)=>{
         const updatedCarrito= carrito.filter(item=>item.id!==productId)
         setCarrito(updatedCarrito)
@@ -54,8 +55,27 @@ export const CarritoProvider= ({children}) =>{
     const isInCarrito=(productId)=>{
         return carrito.some(item=> item.id===productId)
     }
+
+    const incrementar=(idReq)=>{
+        const updatedCarrito= carrito.map(item=>
+            item.id===idReq
+            ?{...item, cantidad: item.cantidad+1}
+            : item
+            );
+        setCarrito(updatedCarrito)
+    }
+    
+    const decrementar=(idReq)=>{
+        const updatedCarrito= carrito.map(item=>
+            item.id===idReq
+            ?{...item, cantidad: item.cantidad-1}
+            : item
+            );
+        setCarrito(updatedCarrito)
+    }
+
     return(
-        <CarritoContext.Provider value={{carrito, addToCarrito, clearCarrito, cantidadEnCarrito, totalCarrito, getCantidadActual, removeItem, isInCarrito}} >
+        <CarritoContext.Provider value={{carrito, addToCarrito, clearCarrito, cantidadEnCarrito, totalCarrito, getCantidadActual, removeItem, isInCarrito, incrementar, decrementar}} >
             {children}
         </CarritoContext.Provider>
     )
