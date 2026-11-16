@@ -8,8 +8,8 @@ function Carrito(){
 
     if (carrito.length===0){
         return(
-            <div className="carritoContainer">
-                <h1>El carrito esta vacío </h1>
+            <div className="emptyCarrito">
+                <h2>El carrito esta vacío </h2>
                 <p>Agrega productos para continuar la compra</p>
                 <Link to="/productos"><button className="btnToProductos">Ir a Productos</button> </Link>
             </div>
@@ -17,22 +17,27 @@ function Carrito(){
     }
 
     return(
-        <div className="carritoContainer">
-            <thead>
-                <tr className="carritoTop" >
-                    <th>Foto</th>
-                    <th>Item</th>
-                    <th>Precio Unit.</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    <th>Accion</th>
-                </tr>
-            </thead>
-                <tbody className="carrito" >
+        <div className="carrito">
+            <div className="carritoTop">
+                <h2>Tu carrito</h2>
+            </div>
+            <table className="carritoTabla">
+                <thead>
+                    <tr >
+                        <th>Foto</th>
+                        <th>Item</th>
+                        <th>Precio Unit.</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {carrito.map(item =>(
                         <CarritoItem key={item.id} {...item} />
                         ))}
                 </tbody>
+            </table>
             <div className="carritoBottom" >
                 <button onClick={clearCarrito} className="btnVaciar">Vaciar Carrito</button>
                 <h3>Total a pagar: ${totalFormato} </h3>

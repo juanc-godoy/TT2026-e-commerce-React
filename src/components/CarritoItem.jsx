@@ -8,19 +8,41 @@ function CarritoItem({imagen,nombre,cantidad,precio,id}){
     const subtotalFormato=new Intl.NumberFormat('es-AR').format(subtotal);
     
     return(
+        /*
+        <table className="carritoTabla">
+                <thead>
+                    <tr >
+                        <th>Foto</th>
+                        <th>Item</th>
+                        <th>Precio Unit.</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {carrito.map(item =>(
+                        <CarritoItem key={item.id} {...item} />
+                        ))}
+                </tbody>
+        */
         <tr className="carritoItem">
             <td className="carritoItemImgHolder">
                 <img className="carritoItemImg" src={imagen} alt={nombre} />
             </td>
             <td><h3>{nombre} </h3></td>
             <td><h3>${precioFormato}</h3></td>
-            <td className="carritoIncDec">
-                {cantidad >=2
-                ? <button className="btnIncDec" onClick={()=>decrementar(id)}>-</button>
-                : <button disabled className="btnIncDec" onClick={()=>decrementar(id)}>-</button>
-                }
-                <p>{cantidad}</p>
-                <button className="btnIncDec" onClick={()=>incrementar(id)}>+</button>
+            <td /* className="carritoIncDec" */>
+                <div className="carritoIncDec">
+                    {cantidad >=2
+                    ? <button className="btnIncDec" onClick={()=>decrementar(id)}>-</button>
+                    : <button disabled className="btnIncDec" onClick={()=>decrementar(id)}>-</button>
+                    }
+                    <p>{cantidad}</p>
+                    <button className="btnIncDec" onClick={()=>incrementar(id)}>+</button>
+                </div>
+                
+                
             </td>
             <td><h3>$ {subtotalFormato}</h3></td>
             <td >

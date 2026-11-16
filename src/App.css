@@ -265,11 +265,8 @@ main{
 }
 
 /* CARRITO */
-
-.carritoContainer{
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+.emptyCarrito h2, p {
+  margin: 0.125rem 0;
 }
 .btnToProductos{
   background-color: var(--col-1);
@@ -278,49 +275,52 @@ main{
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 3px;
-  padding: 0.25rem;
+  margin: 0.25rem;
+  padding: 0.20rem;
 }
-/* .carritoTop{
-  display: flex;
-  justify-content: space-between;
-  height: 5vh;
-  align-items: center;
-  width: 100%;
-  font-weight: 600;
-} */
 .carrito{
   display: flex;
   flex-direction: column;
   margin: 0% auto;
-  width: 100%;
+  width: 80%;
 }
+.carritoTop{
+  width: 100%;
+  & h2 {
+    text-align: left;
+    padding: 0.125rem 0;}
+}
+.carritoTabla{
+  width: 100%;
+  background-color: var(--col-w);
+  padding-left: 0.25rem;
+  padding-top: 0.125rem;
+}
+
 .carritoItem{
   height: 15vh;
-  width: 100%;
   background-color: var(--col-w);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0.125rem 0;
-  margin: 0.125rem 0;
-  align-items: center;
+  border-radius: 5px;
+ /*  padding: 0.125rem 0; */
+  /* margin: 0.125rem 0; */
+  /* align-items: center; */
+
 }
 .carritoItemImgHolder{
-  background-color: var(--col-w);
+  /* background-color: var(--col-w); */
   overflow: hidden;
   object-fit: contain;
   height: 95%;
+  width: 100px;
   aspect-ratio: 4 / 3;
 }
 .carritoItemImg{
-  max-width: 100%;
+  max-width: 100px;
 }
 .carritoIncDec{
   display: flex;
   flex-direction: row;
   padding: 0 0.25rem;
-  align-items: center;
 }
 .btnIncDec{
   background-color: var(--col-1);
@@ -329,7 +329,7 @@ main{
   font-weight: 600;
   border-radius: 5px;
   padding: 0.2rem;
-  margin: 0 0.2rem;
+  margin: 0 0.3rem;
   &:hover{
     scale: 1.03;
   }
@@ -528,6 +528,29 @@ display: flex;
     transition: 750ms;}
 }
 /*GESTION*/
+.gestionTop{
+  width: 80%;
+  padding-top: 0.125rem;
+  margin: 0 auto;
+  & h2 {
+    text-align: left;}
+  & h3 {
+    text-align: right;}
+}
+.btnGestionAgregar{
+  background-color: var(--col-w);
+  color: var(--col-1);
+  border: 2px solid var(--col-w);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
+  padding: 0.25rem;
+  &:hover{
+  background-color: var(--col-1);
+  color: var(--col-w);
+  border-color: var(--col-1);
+  transition: 750ms;}
+}
 .gestionTabla{
   background-color: var(--col-w);
   width: 80%;

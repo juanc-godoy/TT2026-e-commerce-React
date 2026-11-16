@@ -6,15 +6,18 @@ import { Link } from "react-router-dom"
 const Login=() => {
     const [email, setEmail]= useState("")
     const [password, setPassword]= useState("")
+    const [loading, setLoading]=useState(false)
     const navigate= useNavigate()
     const handleLogin= (e)=>{
         e.preventDefault()
+        setLoading(true)
         const auth= getAuth()
         signInWithEmailAndPassword(auth,email,password)
             .then((userCredential)=>{
                 const user=userCredential.user
                 console.log("usuario logueado:", user)
                 alert("login exitoso!")
+                setLoading(false)
                 navigate("/")
             })
             .catch((error)=>{
@@ -22,6 +25,7 @@ const Login=() => {
                 const errorMessage= error.message
                 console.error("Error en el login:",errorCode,errorMessage)
                 alert("Error: "+ errorMessage)
+                setLoading(false)
             })
     }
 
@@ -39,7 +43,9 @@ const Login=() => {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 />
-                <button className="btnLogin" type="submit" >Ingresar</button>
+                {loading?
+                <span>Verificando...</span>
+                :<button className="btnLogin" type="submit" >Ingresar</button>}
             </form>
             <p>¿No tenés una cuenta? <Link to="/registro">Registrate aquí</Link></p>
         </div>

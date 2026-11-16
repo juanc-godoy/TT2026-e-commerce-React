@@ -53,10 +53,15 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
                 </div>
                 }
             </div>
-            {loading ? <div> Cargando...</div> : <button className="btnFormSubmit" type="submit"> Guardar Producto</button>}
+            {loading
+            ? <div> Cargando...</div>
+            : (itemAEditar
+                ? <button className="btnFormSubmit" type="submit"> Guardar cambios</button>
+                : <button className="btnFormSubmit" type="submit"> Guardar producto</button>)
+            }
             {itemAEditar
             ? <button type="button" className="btnFormCancelar" onClick={cancelarEdicion}>Cancelar Edicion</button>
-            : <span></span>
+            : <button type="button" className="btnFormCancelar" onClick={cancelarEdicion}>Cerrar</button>
             }
         </form>
     )

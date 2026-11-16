@@ -36,6 +36,13 @@ const Gestion= ()=>{
         console.log("luego click","es edicion?: ",esEdicion,"modal: ",modal,"item a editar: ", itemAEditar ,typeof(itemAEditar))
         console.log("formato del item: ",prod)
     }
+    
+    const manejarClickAgregar= ()=> {
+        setItemAEditar(false)
+        setEsEdicion(false)
+        setModal(true)
+    }
+    
 
     return(
         <div>
@@ -50,7 +57,10 @@ const Gestion= ()=>{
                 : <span></span>
             }
             <div>
-                <h2>Gestion de Productos</h2>
+                <div className="gestionTop">
+                    <h2>Gestión de Productos</h2>
+                    <h3><button className="btnGestionAgregar" onClick={()=>manejarClickAgregar()}>Agregar producto</button></h3>
+                </div>
                 {productos<=0
                 ? <h2>No hay productos para mostrar</h2>
                 : <table className="gestionTabla">
