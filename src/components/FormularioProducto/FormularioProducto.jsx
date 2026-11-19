@@ -46,10 +46,10 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
                 //value={datosForm.imagenUrl}
                 onChange={manejarCambioImagen}
                 />
-                {esEdicion&&datosForm.imagen&&
+                {esEdicion&&datosForm.imagenUrl&&
                 <div>
                     <p>Imagen Actual</p>
-                    <img src={datosForm.imagen} alt="Vista Previa" width="100px"/>
+                    <img src={datosForm.imagenUrl} alt="Vista Previa" width="100px"/>
                 </div>
                 }
             </div>

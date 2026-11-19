@@ -55,6 +55,24 @@ main{
 .titulo{
   padding: 0.5rem;
 }
+.campoBusqueda{
+  background-color: var(--col-w);
+  border-radius: 3px 3px 3px 3px;
+  border: 2px solid var(--col-w);
+  margin-right: 0.5rem;
+}
+.btnXBusqueda{
+  background-color: var(--col-w);
+  border: 1px solid var(--col-w);
+  color: var(--col-b);
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 10px;
+  margin: 0 0.15rem;
+  padding: 0 0.05rem;
+  /* &:hover{
+    scale: 1.01} */
+}
 
 .navItemContainer{
   display: flex;
