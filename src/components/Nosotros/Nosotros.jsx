@@ -66,9 +66,11 @@ function Nosotros(){
                         <div className="tarjImgHolder">
                           <img className="tarjImg" src={miembro.imagenUrl} alt={miembro.nombre} width="200"/>  
                         </div>
-                        <h3>{miembro.nombre}</h3>
-                        <h4>{miembro.rol}</h4>
-                        <h5>{miembro.email}</h5>
+                        <div className="cardInfo">
+                            <h3>{miembro.nombre}</h3>
+                            <h4>{miembro.rol}</h4>
+                            <h5>{miembro.email}</h5>
+                        </div>
                         </li>
                     )}
                 )}

@@ -157,3 +157,33 @@ const formateado = new Intl.NumberFormat('es-AR').format(numero);
 console.log(formateado); 
 // Resultado: "1.234.567,89"
 */
+
+/*
+FUNCION SEPARADA PARA SUBIR IMAGENES
+    const subirImagenAImgbb= async(archivo)=>{
+        const formData= new FormData()
+        formData.append("imagen",archivo)
+        const apiKey= import.meta.env.VITE_API_KEY
+        try{
+            console.log("Subiendo imagen a Imgbb...")
+            const respuestaImgbb= await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,{
+                method: "POST",
+                 body: formData,
+                })
+            const datosImgbb= await respuestaImgbb.json()
+                if (datosImgbb.success){
+                    return datosImgbb.data.url
+                } else {
+                    throw new Error('Fallo al subir la imagen a Imgbb.')
+                }
+        }
+        catch (error){
+            console.error("Error en el proceso de envío:", error)
+            alert("Error al subir la imagen. Por favor, intentá de nuevo.")
+            return
+        }
+        finally{
+            console.log("llegamos al finally")
+        } 
+    }//fin funcion
+    */

@@ -34,34 +34,22 @@ export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar,
         setImagenFile(archivo)
     }
 
-    /*
     const subirImagenAImgbb= async(archivo)=>{
         const formData= new FormData()
-        formData.append("imagen",archivo)
-        const apiKey= import.meta.env.VITE_API_KEY
-        try{
-            console.log("Subiendo imagen a Imgbb...")
-            const respuestaImgbb= await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,{
-                method: "POST",
-                 body: formData,
-                })
-            const datosImgbb= await respuestaImgbb.json()
-                if (datosImgbb.success){
-                    return datosImgbb.data.url
-                } else {
-                    throw new Error('Fallo al subir la imagen a Imgbb.')
-                }
+        formData.append("image",archivo)
+        const apiKey= import.meta.env.VITE_IMGBB_API_KEY
+        console.log("Subiendo imagen a Imgbb...")
+        const respuestaImgbb= await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`,{
+            method: "POST",
+            body: formData,
+            })
+        const datosImgbb= await respuestaImgbb.json()
+        if (!datosImgbb.success){
+            throw new Error('Fallo al subir la imagen a Imgbb.')
         }
-        catch (error){
-            console.error("Error en el proceso de envío:", error)
-            alert("Error al subir la imagen. Por favor, intentá de nuevo.")
-            return
-        }
-        finally{
-            console.log("llegamos al finally")
-        } 
+        return datosImgbb.data.url
     }//fin funcion
-    */
+    
     const cancelarEdicion= () => {
         setEsEdicion(false)
         setModal(false)
@@ -74,77 +62,51 @@ return; // Detiene la ejecución de la función
 }
 */
     const manejarEnvio= async(evento)=>{
-            setLoading(true)
-            evento.preventDefault()
-            if (datosForm.nombre.trim()===""||datosForm.precio<=0){
-                alert("Verifique que todos los campos estan completos y que precio sea mayor a cero")
-                setLoading(false)
-                return
+        setLoading(true)
+        evento.preventDefault()
+        if (datosForm.nombre.trim()===""||datosForm.precio<=0){
+            alert("Verifique que todos los campos estan completos y que precio sea mayor a cero")
+            setLoading(false)
+             return
+        }
+        if (!imagenFile){
+            alert("Adjunta una imagen para continuar")
+            setLoading(false)
+            return
+        }
+        try {
+            let imagenUrl= datosForm.imagenUrl||""
+            if (imagenFile){
+                imagenUrl= await subirImagenAImgbb(imagenFile)
             }
-            if (!imagenFile){
-                alert("Adjunta una imagen para continuar")
-                setLoading(false)
-                return
-            }else{//PRUEBA SALTEAR IMGBB/Freeimage.host
-                /* let imagen = datosForm.imagenUrl || "";
-                const formData = new FormData();
-                formData.append("source", imagenFile);
-                formData.append("key", import.meta.env.VITE_API_KEY);
-                formData.append("format", "json");
+            const productoFinal = {
+                //...datosForm,
+                nombre: datosForm.nombre,
+                precio: Number(datosForm.precio),
+                stock: Number(datosForm.stock),
+                categoria: datosForm.categoria.trim().toLowerCase(),
+                imagenUrl: imagenUrl
+                };
+            if (itemAEditar){
+                const docRef=doc(db,"productos nacionales",itemAEditar.id)
+                await updateDoc(docRef, productoFinal)
+                alert("Producto actualizado exitosamente")
+            } else {
+                const productCollection=collection(db,"productos nacionales")
+                await addDoc(productCollection, productoFinal)
+                alert("Producto guardado exitosamente")
+            }
+            setDatosForm(estadoInicialForm);
+            setImagenFile(null)
+            setModal(false)
+        } catch (error) {
+            console.error("Error en el envío de datos:", error)
+            alert("Error al procesar.")
+        } finally{
+            setLoading(false)
+        }
+    }//FIN MANEJAR ENVIO
 
-                try {
-                    console.log("Subiendo imagen a Freeimage.host...");
-                    const respuestaAPI = await fetch("https://freeimage.host/api/1/upload", {
-                        method: "POST",
-                        body: formData,
-                        });
-
-                    const datosRespuesta = await respuestaAPI.json();
-
-                    if (!respuestaAPI.ok || datosRespuesta.status_code !== 200) {
-                        throw new Error('La subida de la imagen a Freeimage.host falló.');
-                        }
-                    imagen = datosRespuesta.image.url;
-                } catch (error) {
-                    console.error("Error en el proceso de envío:", error);
-                    alert("Error al subir la imagen. Por favor, intentá de nuevo.");
-                    return;
-                } finally {
-                    setLoading(false);
-                    } */
-                
-                let imagen="...URL PENDIENTE..."
-                //const productoFinal={...datosForm, imagenUrl: imagen}
-                console.log("antes normalizar", datosForm)
-                const productoFinal = {
-                    //...datosForm,
-                    nombre: datosForm.nombre,
-                    precio: Number(datosForm.precio),
-                    stock: Number(datosForm.stock),
-                    categoria: datosForm.categoria.trim().toLowerCase(),
-                    imagenUrl: imagen
-                    };
-                
-                console.log("dsps normalizar",productoFinal)
-                try{
-                    if (itemAEditar){
-                        const docRef=doc(db,"productos nacionales",itemAEditar.id)
-                        await updateDoc(docRef, productoFinal)
-                        alert("Producto actualizado exitosamente")
-                    } else {
-                        const productCollection=collection(db,"productos nacionales")
-                        await addDoc(productCollection, productoFinal)
-                        alert("Producto guardado exitosamente")
-                    }
-                }
-                catch (error){
-                    console.error("Error:", error);
-                }
-                finally{
-                    setLoading(false)
-                }
-            }//aqui finalizaBA el if(imagenfile)
-    }
     return (
         <FormularioProducto
         datosForm={datosForm}

@@ -35,6 +35,7 @@ const Gestion= ()=>{
         setModal(true)
         console.log("luego click","es edicion?: ",esEdicion,"modal: ",modal,"item a editar: ", itemAEditar ,typeof(itemAEditar))
         console.log("formato del item: ",prod)
+        window.scrollTo(0, 0)
     }
     
     const manejarClickAgregar= ()=> {
