@@ -434,25 +434,13 @@ main{
   transition: 1000ms;}
 }
 /*
-display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  text-align: left ;
-  height: 55vh;
-  max-width: 30%;
-  background-color: var(--col-5);
-  border: 3px solid var(--col-w);
-  border-radius: 0px 10px 15px 15px;
-  margin:  0 0.5rem 0.125rem 0.5rem;
-  padding: 0 0 0.1rem 0;
 */
 .unicoImgHolder{
-  width: 60%;
+  width: 50%;
   overflow: hidden;
 }
 .unicoInfo{
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

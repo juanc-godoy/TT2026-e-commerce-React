@@ -1,41 +1,75 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { db } from "../../firebase/config"
+import { doc, getDoc } from "firebase/firestore"
+/* import { useCart } from "../Context/CarritoContext"; */
+
 
 const UnicoProducto = ()=>{
     const {id}= useParams()
     const [producto,setProducto]=useState(null)
     const [cargando, setCargando]= useState(true)
-
-    /* const precioFormato=new Intl.NumberFormat('es-AR').format(producto.precio) */
+    const [error, setError]= useState(null)
 
     useEffect(()=> {
-        fetch('/data/productos.json')
+        const fetchProducto= async()=>{
+            setCargando(true)
+            try {
+                const docRef= doc(db, "productos nacionales", id)
+                const docSnapshot= await getDoc(docRef)
+
+                if (docSnapshot.exists()){
+                    setProducto(
+                        {...docSnapshot.data(),
+                            id: docSnapshot.id
+                        })
+                } else {
+                    setError("El producto no existe")
+                }
+            } catch (error) {
+                setError("Error al conectar con la base de datos")
+                console.error("Error al cargar producto: ",error)
+            } finally {
+                setCargando(false)
+            }
+        }
+        
+        fetchProducto()
+        /* fetch('/data/productos.json')
             .then((res) => res.json())
             .then((data)=> {
                 const encontrado= data.find(prod=> prod.id===parseInt(id))
                 setProducto(encontrado)
             })
             .catch((error)=> console.error("Error al cargar el producto", error))
-            .finally(()=>setCargando(false))
+            .finally(()=>setCargando(false)) */
     },[id])
-    
+    let precioFormato
+    if (producto && producto.nombre) {
+        precioFormato= new Intl.NumberFormat('es-AR').format(producto.precio)
+    }
+    /* const precioFormato= new Intl.NumberFormat('es-AR').format(producto.precio?) */
+
     if (cargando){
         return <h2>Cargando detalle del producto...</h2>
     }
-    if(!producto){
-        return <h2>Producto no encontrado.</h2>
+    if(error){
+        return <h2>Error: {error}</h2>
+    }
+    if (!producto){
+        return <h2>Producto no encontrado</h2>
     }
     return(
         <div className="unicoProducto">
             <div className="unicoInfo">
                 <h5>{producto.categoria||"categoria"}</h5>
                 <h2>{producto.nombre} </h2>
-                <h3>${/* precioFormato ||*/producto.precio} </h3>
+                <h3>${precioFormato||producto.precio} </h3>
                 <p> {producto.descripcion||"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, dolor harum. Ea quibusdam corporis aut doloremque facilis omnis fuga ad placeat! Dolorum praesentium quos nemo magni quo officiis numquam inventore?"}</p>
                 <h4>Stock: {producto.stock}</h4>
             </div>
             <div className="unicoImgHolder">
-                <img className="unicoImg" src={producto.imagen} alt={producto.nombre} />
+                <img className="unicoImg" src={producto.imagenUrl} alt={producto.nombre} />
             </div>
         </div>
     )
@@ -43,16 +77,5 @@ const UnicoProducto = ()=>{
 
 export default UnicoProducto
 
-/* return (
-        <div className="unicoProducto">
-            <div className="unicoImgHolder" >
-                <img src={imagen} alt={nombre} />
-            </div>
-            <div className="unicoDetalle">
-                <h3>{nombre} </h3>
-                <h4>$ {precio} </h4>
-                <p>Stock: {stock} u.</p>
-                <p>Prod.Id: {id} </p>
-            </div>
-        </div>
-    ) */
+/*
+*/
