@@ -1,14 +1,31 @@
-import { useState, useEffect } from "react"
 import { Item } from "../Item/Item"
+import { db } from "../../firebase/config"
+import usePaginacion from "../UsePaginacion"
+import Paginacion from "../Paginacion"
 
-
-function Productos({Mensaje}){
-    const [productos, setProductos]= useState([])
+const Productos= ()=>{
+    /* const [productos, setProductos]= useState([])
     const [error, setError]= useState(null)
-    const [cargando, setCargando]= useState(true)
+    const [cargando, setCargando]= useState(true) */
+    const {
+    elementos: productos,
+    paginaActual,
+    totalPaginas,
+    cargando,
+    irAPagina,
+    paginaAnterior,
+    paginaSiguiente
+  } = usePaginacion({
+    db,
+    nombreColeccion: "productos nacionales",
+    tamanoPagina: 3,
+    campoOrden: "nombre",
+    direccionOrden: "asc",
+  });
+    
     //const API='/data/productos.json'
 
-    useEffect(()=>{
+    /* useEffect(()=>{
         fetch('/data/productos.json')
             .then((response)=>{
                 if(!response.ok){
@@ -19,22 +36,33 @@ function Productos({Mensaje}){
             .catch((error)=>{setError(error)})
             .finally(()=>{setCargando(false)})
             })
-    },[])
-    if (cargando){
+    },[]) */
+    if (cargando&& productos.length===0){
         return <p>Cargando productos por favor espere...</p>
     }
-    if (error){
+    /* if (error){
         return <p>Error:{error}</p>
-    }
+    } */
     return(
         <div>
-            <h1>{Mensaje}</h1>
-            <ul className="listaProd">
-                {productos.map(prod=>(
-                    <Item key={prod.id} {...prod} />
-                ))} 
-            </ul>
+            <h1>Productos</h1>
+            {productos.length === 0
+            ? <p>No hay productos disponibles.</p>
+            : <ul className="listaProd">
+                    {productos.map(prod=>(
+                        <Item key={prod.id} {...prod} />
+                    ))} 
+                </ul>
+            }
             
+            <Paginacion
+                paginaActual={paginaActual}
+                totalPaginas={totalPaginas}
+                irAPagina={irAPagina}
+                paginaSiguiente={paginaSiguiente}
+                paginaAnterior={paginaAnterior}
+                deshabilitado={cargando}
+            />
         </div>
     )
 }
@@ -42,9 +70,65 @@ function Productos({Mensaje}){
 export default Productos
 
 /*
-<li key={producto.id} >
-                        <h2>{producto.nombre}</h2>
-                        <img src={producto.imagen} alt={producto.nombre} width="300"/>
-                        <p>Precio:{producto.precio} </p>
-                    </li>
+import { db } from "../../firebase/config";
+import { usePaginacion } from "../../hooks/usePaginacion";
+import Paginacion from "../../components/Paginacion";
+
+const Productos = () => {
+  const {
+    elementos: productos,
+    paginaActual,
+    totalPaginas,
+    cargando,
+    irAPagina,
+  } = usePaginacion({
+    db,
+    nombreColeccion: "productos",
+    tamanoPagina: 6,
+    campoOrden: "nombre",
+    direccionOrden: "asc",
+  });
+
+  if (cargando && productos.length === 0) {
+    return <p>Cargando productos...</p>;
+  }
+
+  return (
+    <div>
+      <h1>Productos</h1>
+
+      <div className="lista-productos">
+        {productos.length === 0 ? (
+          <p>No hay productos disponibles.</p>
+        ) : (
+          productos.map((prod) => (
+            <div key={prod.id}>
+              {prod.imagen && (
+                <img
+                  src={prod.imagen}
+                  alt={prod.nombre}
+                  style={{ width: "100px" }}
+                />
+              )}
+              <h3>{prod.nombre}</h3>
+              <p>Categoría: {prod.categoria}</p>
+              <p>Precio: ${prod.precio}</p>
+              <p>Stock: {prod.stock} unidades</p>
+              <hr />
+            </div>
+          ))
+        )}
+      </div>
+
+      <Paginacion
+        paginaActual={paginaActual}
+        totalPaginas={totalPaginas}
+        alCambiarPagina={irAPagina}
+        deshabilitado={cargando}
+      />
+    </div>
+  );
+};
+
+export default Productos;
 */

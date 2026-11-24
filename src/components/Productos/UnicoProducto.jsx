@@ -6,6 +6,8 @@ const UnicoProducto = ()=>{
     const [producto,setProducto]=useState(null)
     const [cargando, setCargando]= useState(true)
 
+    /* const precioFormato=new Intl.NumberFormat('es-AR').format(producto.precio) */
+
     useEffect(()=> {
         fetch('/data/productos.json')
             .then((res) => res.json())
@@ -25,13 +27,15 @@ const UnicoProducto = ()=>{
     }
     return(
         <div className="unicoProducto">
+            <div className="unicoInfo">
+                <h5>{producto.categoria||"categoria"}</h5>
+                <h2>{producto.nombre} </h2>
+                <h3>${/* precioFormato ||*/producto.precio} </h3>
+                <p> {producto.descripcion||"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, dolor harum. Ea quibusdam corporis aut doloremque facilis omnis fuga ad placeat! Dolorum praesentium quos nemo magni quo officiis numquam inventore?"}</p>
+                <h4>Stock: {producto.stock}</h4>
+            </div>
             <div className="unicoImgHolder">
                 <img className="unicoImg" src={producto.imagen} alt={producto.nombre} />
-            </div>
-            <div className="unicoDetalle">
-                <h2>{producto.nombre} </h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, dolor harum. Ea quibusdam corporis aut doloremque facilis omnis fuga ad placeat! Dolorum praesentium quos nemo magni quo officiis numquam inventore?</p>
-                <h3>${producto.precio} </h3>
             </div>
         </div>
     )

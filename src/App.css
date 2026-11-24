@@ -37,7 +37,7 @@ body {
   background-color: var(--col-5);
 }
 main{
-  min-height: 75vh;
+  min-height: 85vh;
 }
 
 /*HEADER*/
@@ -426,13 +426,12 @@ main{
   height: 70vh;
   background-color: var(--col-w);
   /* border: 3px solid var(--col-2); */
-  border-radius: 0px 10px 10px 10px;
+  border-radius: 0px 5px 5px 5px;
   margin: 0.5rem auto;
   box-shadow: 3px 5px 10px 0px var(--col-4);
-}
-.unicoProducto:hover{
-  box-shadow: 3px 5px 10px 0px var(--col-w);
-  transition: 1000ms;
+  &:hover{
+  box-shadow: 3px 5px 10px 0px var(--col-1);
+  transition: 1000ms;}
 }
 /*
 display: flex;
@@ -452,12 +451,17 @@ display: flex;
   width: 60%;
   overflow: hidden;
 }
-.unicoDetalle{
+.unicoInfo{
   width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.25rem 0.125rem;
+  margin: 0.25rem 0;
+  & h2, h3, h4, h5, h6, p {
+    text-align: left;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
 }
 .unicoImg{
   overflow: hidden;
@@ -629,5 +633,40 @@ display: flex;
   background-color: var(--col-ver);
   color: var(--col-w);
   border: 2px solid var(--col-ver);
+  transition: 500ms;}
+}
+/*PAGINACION*/
+.paginacion{
+  height: 10vh;
+
+}
+.btnFlecha{
+  background-color: var(--col-1);
+  color: var(--col-w);
+  border: 2px solid var(--col-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 0.25rem;
+  margin: 0 0.125rem;
+  &:hover{
+  background-color: var(--col-w);
+  color: var(--col-1);
+  border: 2px solid var(--col-1);
+  transition: 500ms;}
+}
+.btnPagina{
+  background-color: var(--col-1);
+  color: var(--col-w);
+  border: 2px solid var(--col-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 0.25rem;
+  margin: 0 0.125rem;
+  &:hover{
+  background-color: var(--col-w);
+  color: var(--col-1);
+  border: 2px solid var(--col-1);
   transition: 500ms;}
 }

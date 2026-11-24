@@ -7,10 +7,10 @@ import {Favorito} from "../Favorito/Favorito"
 //import UnicoProducto from "../Productos/UnicoProducto"
 
 
-export function Item({id,nombre,precio,stock,imagen}){
+export function Item({id,nombre,precio,stock,imagenUrl}){
     const {addToCarrito }=useCart()
     //const {addToCarrito, getCantidadActual, carrito}=useCart()
-    const producto={id,nombre, precio, stock,imagen}
+    const producto={id,nombre, precio, stock, imagenUrl}
     //const [cantidad, setCantidad]= useState(0)
     //const cantidadActual=getCantidadActual(id)
     const cuota=(precio/3).toFixed(2)
@@ -32,7 +32,7 @@ export function Item({id,nombre,precio,stock,imagen}){
     return (
         <div className="item">
             <div className="itemImgHolder">
-                <img className="itemImg" src={imagen} alt={nombre} />
+                <img className="itemImg" src={imagenUrl} alt={nombre} />
             </div>
             <div className="itemInfo" >
                 <h6 className="itemInfoData">Categoria/hogar</h6>

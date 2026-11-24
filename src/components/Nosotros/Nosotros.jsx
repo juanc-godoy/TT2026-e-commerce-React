@@ -50,7 +50,6 @@ function Nosotros(){
             .finally(()=>setCargando(false))
             }) */
     },[])
-    console.log(randoms)
     if (cargando){
         return <p>Cargando staff...</p>
     }
