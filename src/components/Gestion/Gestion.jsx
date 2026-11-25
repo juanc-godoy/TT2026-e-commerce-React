@@ -29,12 +29,9 @@ const Gestion= ()=>{
         }
     
     const manejarClickEdit= (prod)=> {
-        console.log("antes click","es edicion?: ",esEdicion,"modal: ",modal,"item a editar: ", itemAEditar ,typeof(itemAEditar))
         setItemAEditar(prod)
         setEsEdicion(true)
         setModal(true)
-        console.log("luego click","es edicion?: ",esEdicion,"modal: ",modal,"item a editar: ", itemAEditar ,typeof(itemAEditar))
-        console.log("formato del item: ",prod)
         window.scrollTo(0, 0)
     }
     
@@ -60,7 +57,7 @@ const Gestion= ()=>{
             <div>
                 <div className="gestionTop">
                     <h2>Gestión de Productos</h2>
-                    <h3><button className="btnGestionAgregar" onClick={()=>manejarClickAgregar()}>Agregar producto</button></h3>
+                    <h3><button className="btnGestionAgregar" onClick={()=>manejarClickAgregar()}>+ Agregar producto</button></h3>
                 </div>
                 {productos<=0
                 ? <h2>No hay productos para mostrar</h2>
@@ -82,8 +79,9 @@ const Gestion= ()=>{
                                 </td>
                                 <td>{prod.nombre} </td>
                                 <td>{prod.categoria} </td>
-                                <td>{prod.precio} </td>
+                                <td>$ {new Intl.NumberFormat('es-AR').format(prod.precio)} </td>
                                 <td>
+                                    <div className="btnsGestion" ></div>
                                     <button className="btnGestionEditar" onClick={()=>manejarClickEdit(prod)}>Editar</button>
                                     <button className="btnGestionEliminar" onClick={()=>manejarDelete(prod.id)}>Eliminar</button>
                                 </td>

@@ -2,11 +2,14 @@ import { Item } from "../Item/Item"
 import { db } from "../../firebase/config"
 import usePaginacion from "../UsePaginacion"
 import Paginacion from "../Paginacion"
+import { useSearch } from "../Context/SearchContext"
 
 const Productos= ()=>{
     /* const [productos, setProductos]= useState([])
     const [error, setError]= useState(null)
     const [cargando, setCargando]= useState(true) */
+    const { busqueda }= useSearch()
+
     const {
     elementos: productos,
     paginaActual,
@@ -18,25 +21,15 @@ const Productos= ()=>{
   } = usePaginacion({
     db,
     nombreColeccion: "productos nacionales",
-    tamanoPagina: 3,
+    tamanoPagina: 6,
     campoOrden: "nombre",
     direccionOrden: "asc",
   });
-    
-    //const API='/data/productos.json'
 
-    /* useEffect(()=>{
-        fetch('/data/productos.json')
-            .then((response)=>{
-                if(!response.ok){
-                    throw new Error("No se pudo cargar la informacion de los productos")
-                }
-                return response.json()
-            .then((datos)=>{setProductos(datos)})
-            .catch((error)=>{setError(error)})
-            .finally(()=>{setCargando(false)})
-            })
-    },[]) */
+    const productosFiltrados = productos.filter(prod =>
+        prod.nombre?.toLowerCase().includes(busqueda.toLowerCase())
+        );
+    
     if (cargando&& productos.length===0){
         return <p>Cargando productos por favor espere...</p>
     }
@@ -49,7 +42,7 @@ const Productos= ()=>{
             {productos.length === 0
             ? <p>No hay productos disponibles.</p>
             : <ul className="listaProd">
-                    {productos.map(prod=>(
+                    {productosFiltrados.map(prod=>(
                         <Item key={prod.id} {...prod} />
                     ))} 
                 </ul>

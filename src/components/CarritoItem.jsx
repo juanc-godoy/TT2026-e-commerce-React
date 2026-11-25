@@ -1,6 +1,6 @@
 import {useCart} from "./Context/CarritoContext"
 
-function CarritoItem({imagen,nombre,cantidad,precio,id}){
+function CarritoItem({imagenUrl,nombre,cantidad,precio,id}){
     //const producto={imagen,nombre,cantidad,precio,id}
     const {removeItem, incrementar, decrementar}=useCart()
     const precioFormato=new Intl.NumberFormat('es-AR').format(precio);
@@ -9,30 +9,14 @@ function CarritoItem({imagen,nombre,cantidad,precio,id}){
     
     return(
         /*
-        <table className="carritoTabla">
-                <thead>
-                    <tr >
-                        <th>Foto</th>
-                        <th>Item</th>
-                        <th>Precio Unit.</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th>Accion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {carrito.map(item =>(
-                        <CarritoItem key={item.id} {...item} />
-                        ))}
-                </tbody>
         */
         <tr className="carritoItem">
             <td className="carritoItemImgHolder">
-                <img className="carritoItemImg" src={imagen} alt={nombre} />
+                <img className="carritoItemImg" src={imagenUrl} alt={nombre} />
             </td>
             <td><h3>{nombre} </h3></td>
             <td><h3>${precioFormato}</h3></td>
-            <td /* className="carritoIncDec" */>
+            <td>
                 <div className="carritoIncDec">
                     {cantidad >=2
                     ? <button className="btnIncDec" onClick={()=>decrementar(id)}>-</button>
@@ -41,8 +25,6 @@ function CarritoItem({imagen,nombre,cantidad,precio,id}){
                     <p>{cantidad}</p>
                     <button className="btnIncDec" onClick={()=>incrementar(id)}>+</button>
                 </div>
-                
-                
             </td>
             <td><h3>$ {subtotalFormato}</h3></td>
             <td >

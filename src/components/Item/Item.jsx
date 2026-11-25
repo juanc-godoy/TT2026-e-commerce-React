@@ -7,7 +7,7 @@ import {Favorito} from "../Favorito/Favorito"
 //import UnicoProducto from "../Productos/UnicoProducto"
 
 
-export function Item({id,nombre,precio,stock,imagenUrl}){
+export function Item({id,nombre,precio,stock,imagenUrl,categoria}){
     const {addToCarrito }=useCart()
     //const {addToCarrito, getCantidadActual, carrito}=useCart()
     const producto={id,nombre, precio, stock, imagenUrl}
@@ -35,8 +35,8 @@ export function Item({id,nombre,precio,stock,imagenUrl}){
                 <img className="itemImg" src={imagenUrl} alt={nombre} />
             </div>
             <div className="itemInfo" >
-                <h6 className="itemInfoData">Categoria/hogar</h6>
-                <h3 className="itemInfoData"> <Link className="" to={`/producto/${id}`}>{nombre} </Link> </h3>
+                <h6 className="itemInfoData">{categoria||"Categoria"}</h6>
+                <h3 className="itemInfoData"> <Link className="link" to={`/producto/${id}`}>{nombre} </Link> </h3>
                 <h4 className="itemInfoData">${precioFormato} <Favorito/></h4>
                 <h5 className="itemInfoData">Hasta 3 cuotas de ${cuotaFormato} </h5>
                 {/* <p>Id. Prod: {id} </p> */}

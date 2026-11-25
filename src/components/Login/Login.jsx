@@ -15,7 +15,6 @@ const Login=() => {
         signInWithEmailAndPassword(auth,email,password)
             .then((userCredential)=>{
                 const user=userCredential.user
-                console.log("usuario logueado:", user)
                 alert("login exitoso!")
                 setLoading(false)
                 navigate("/")

@@ -12,13 +12,13 @@ function Header(){
         setBusqueda(valor);
 
         if (location.pathname !== "/productosNac") {
-            navigate("/productosNac");
+            navigate("/productos");
             }
     };
 
     return (
         <header className="header">
-            <h4 className="headerItem">Bienvenidos a mi App React</h4>
+            <h4 className="headerItem">INDIANA STORE</h4>
             <form
             className=""
             onSubmit={(evento) => evento.preventDefault()}

@@ -69,7 +69,7 @@ return; // Detiene la ejecución de la función
             setLoading(false)
              return
         }
-        if (!imagenFile){
+        if (!imagenFile && !datosForm.imagenUrl){
             alert("Adjunta una imagen para continuar")
             setLoading(false)
             return
