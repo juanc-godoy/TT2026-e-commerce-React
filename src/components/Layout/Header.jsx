@@ -1,6 +1,7 @@
 import { useSearch } from "../Context/SearchContext"
 import Navbar from "./Navbar"
 import { useNavigate, useLocation } from "react-router-dom"
+import { PawPrint } from "lucide-react"
 
 function Header(){
     const {busqueda, setBusqueda}= useSearch()
@@ -18,7 +19,8 @@ function Header(){
 
     return (
         <header className="header">
-            <h4 className="headerItem">INDIANA STORE</h4>
+            <h2 className="titulo"><PawPrint size={20} color="#F7F5FB" strokeWidth={2.5} /> Indiana Store</h2>
+            
             <form
             className=""
             onSubmit={(evento) => evento.preventDefault()}

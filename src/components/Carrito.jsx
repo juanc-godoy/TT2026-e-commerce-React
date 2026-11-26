@@ -24,7 +24,7 @@ function Carrito(){
             <table className="carritoTabla">
                 <thead>
                     <tr >
-                        <th>Foto</th>
+                        <th>Imagen</th>
                         <th>Item</th>
                         <th>Precio Unit.</th>
                         <th>Cantidad</th>

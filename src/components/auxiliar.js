@@ -98,28 +98,6 @@ const subirImagenImgbb = async (file) => {
   };
 */
 
-function devolverRandoms(){
-    const randoms=[]
-    while (randoms.length<=2){
-        const newEntero=Math.floor(Math.random() * 10);
-
-        if (!randoms.includes(newEntero)){
-        randoms.push(newEntero)
-        }
-    }
-    return randoms
-}
-
-devolverRandoms()
-
-const frutas = ["manzana", "banana", "naranja", "pera", "uva", "durazno", "frutilla", "pomelo", "kiwi", "anana"];
-
-const randoms=devolverRandoms()
-console.log("randoms: ",randoms)
-
-console.log(frutas[randoms[0]])
-console.log(frutas[randoms[1]])
-console.log(frutas[randoms[2]])
 /*
 else{//PRUEBA SALTEAR IMGBB
                 let imagen = datosForm.imagenUrl||"";
@@ -187,3 +165,4 @@ FUNCION SEPARADA PARA SUBIR IMAGENES
         } 
     }//fin funcion
     */
+

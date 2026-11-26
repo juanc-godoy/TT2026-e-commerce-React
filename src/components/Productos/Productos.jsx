@@ -21,7 +21,7 @@ const Productos= ()=>{
   } = usePaginacion({
     db,
     nombreColeccion: "productos nacionales",
-    tamanoPagina: 6,
+    tamanoPagina: 8,
     campoOrden: "nombre",
     direccionOrden: "asc",
   });

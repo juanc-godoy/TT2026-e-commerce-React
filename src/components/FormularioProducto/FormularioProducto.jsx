@@ -21,9 +21,11 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
                 onChange={manejarCambio}
                 >
                 <option value="" disabled>Selecciona categoría</option>
-                <option value="tecnologia">Tecnología</option>
-                <option value="hogar">Hogar</option>
-                <option value="moda">Moda</option>
+                <option value="alimentos">Alimentos</option>
+                <option value="juguetes">Juguetes</option>
+                <option value="salud">Salud</option>
+                <option value="higiene">Higiene</option>
+                <option value="accesorios">Accesorios</option>
                 </select>
             </div>
             <div>
