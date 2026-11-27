@@ -80,11 +80,3 @@ export const CarritoProvider= ({children}) =>{
         </CarritoContext.Provider>
     )
 }
-
-
-
-/*
-const isInCart = (productId) => {
-return cart.some(item => item.id === productId);
-}
-*/

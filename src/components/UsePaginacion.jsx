@@ -96,6 +96,3 @@ const usePaginacion= ({db, nombreColeccion, tamanoPagina=6,
 }
 
 export default usePaginacion
-
-/*
-*/

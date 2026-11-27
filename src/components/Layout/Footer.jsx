@@ -25,7 +25,3 @@ function Footer(){
 }
 
 export default Footer
-
-/*
-propiedad intelectual, políticas de privacidad, contacto, newsletter, sucursales o sedes, etc.
-*/

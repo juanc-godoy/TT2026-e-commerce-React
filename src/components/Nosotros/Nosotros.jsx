@@ -18,18 +18,7 @@ function Nosotros(){
     const [cargando,setCargando]=useState(true)
     const [error,setError]=useState(null)
     const randoms=devolverRandoms()
-    //const fetch="/data/nosotros.json"
-
-    /*
-    useEffect(()=>{
-            const fetchProductos= async()=>{
-                const productosRef= collection(db, "productos nacionales",)
-                const resp= await getDocs(productosRef)
-                setProductos(resp.docs.map((doc)=>({...doc.data(),id: doc.id})))
-            }
-            fetchProductos()
-        },[])
-    */
+    
     useEffect(() => {
         const fetchMiembros= async()=>{
             const miembrosRef= collection(db,"miembros")
@@ -39,16 +28,6 @@ function Nosotros(){
             setError(false)
         }
         fetchMiembros()
-        /* fetch("/data/nosotros.json")
-            .then(response=>{
-                if (!response.ok){
-                    throw new Error("No se pudo cargar la informacion de <nosotros>")
-                }
-                return response.json()
-            .then(datos=>setNosotros(datos))
-            .catch(error=>setError(error))
-            .finally(()=>setCargando(false))
-            }) */
     },[])
     if (cargando){
         return <p>Cargando staff...</p>

@@ -13,5 +13,3 @@ export function Layout(){
         </div>
     )
 }
-
-//OJO quité children parametro y dentro de main

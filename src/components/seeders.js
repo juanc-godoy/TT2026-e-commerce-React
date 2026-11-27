@@ -1,3 +1,12 @@
+/*
+SCRIPT PARA AGREGAR PRODUCTOS A LA BASE DE DATOS
+SOLO HAY QUE REEMPLAZAR:
+1_ EL ARRAY DE PRODUCTOS POR EL DESEADO
+2_ EL NOMBRE DE LA COLECCION POR LA QUE CORRESPONDA
+3_ EN EL ARCHIVO "config.js" MODIFICAR EL NOMBRE DE LAS VARIABLES QUE EMPIEZAN CON
+"import.meta.env" PARA QUE TOME LOS VALORES DEL .ENV
+(O BIEN HARDCODEARLAS, EJECUTAR EL SCRIPT, Y LUEGO BORRARLAS)
+*/
 import {db} from "../firebase/config.js"
 import { collection, addDoc } from "firebase/firestore"
 
@@ -246,11 +255,11 @@ const productsSeeders=[
   }
 ];
 
-
 const addProductsToDb= ()=>{
     productsSeeders.forEach( async(product)=>{
         await addDoc(productsCollection,product)
         console.log("agregado",product)
     })
 }
+
 addProductsToDb()

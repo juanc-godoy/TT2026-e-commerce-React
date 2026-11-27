@@ -51,19 +51,3 @@ const Login=() => {
     )
 }
 export default Login
-
-/*
-<input
-type="password"
-placeholder="Contraseña"
-value={password}
-onChange={(e) => setPassword(e.target.value)}
-/>
-<button type="submit">Ingresar</button>
-</form>
-</div>
-);
-};
-export default Login;
-/>
-*/

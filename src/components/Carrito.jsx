@@ -47,15 +47,3 @@ function Carrito(){
     )
 }
 export default Carrito
-
-/*
-/<div key={item.id} className="carritoItem" >
-    <div className="carritoItemImgHolder">
-        <img src={item.imagen} alt={item.nombre} className="carritoItemImg"/>
-    </div>
-        <h4>{item.nombre}</h4>
-        <p>${item.precio} </p>
-        <p>{item.cantidad} </p>
-        <p>${item.precio*item.cantidad} </p>
-</div>
-*/

@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect} from "react";
-//import { db } from "../../firebase/config"
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 import { getAuth, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 
@@ -63,8 +62,4 @@ export const AuthProvider= ({children}) =>{
             {!loading && children}
         </AuthContext.Provider>
     )
-}//final auth provider
-
-/*
-
-*/
+}

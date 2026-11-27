@@ -54,13 +54,7 @@ export function AltaProducto({esEdicion,setEsEdicion,itemAEditar,setItemAEditar,
         setEsEdicion(false)
         setModal(false)
     }
-/*
-if (datosForm.nombre.trim() === "" || datosForm.precio <= 0) {
-alert("Por favor, complete todos los campos y asegúrese de que el
-precio sea mayor a cero.");
-return; // Detiene la ejecución de la función
-}
-*/
+
     const manejarEnvio= async(evento)=>{
         setLoading(true)
         evento.preventDefault()
@@ -80,7 +74,6 @@ return; // Detiene la ejecución de la función
                 imagenUrl= await subirImagenAImgbb(imagenFile)
             }
             const productoFinal = {
-                //...datosForm,
                 nombre: datosForm.nombre,
                 precio: Number(datosForm.precio),
                 stock: Number(datosForm.stock),
@@ -117,7 +110,6 @@ return; // Detiene la ejecución de la función
         cancelarEdicion={cancelarEdicion}
         esEdicion={esEdicion}
         itemAEditar={itemAEditar}
-        //setItemAEditar={setItemAEditar}
         />
         )
 }

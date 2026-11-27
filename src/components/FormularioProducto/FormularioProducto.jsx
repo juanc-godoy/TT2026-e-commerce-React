@@ -1,4 +1,3 @@
-//import React from "react";
 
 export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejarCambioImagen,loading,cancelarEdicion,esEdicion,itemAEditar}){
     return (
@@ -21,11 +20,11 @@ export function FormularioProducto({datosForm,manejarCambio,manejarEnvio,manejar
                 onChange={manejarCambio}
                 >
                 <option value="" disabled>Selecciona categoría</option>
-                <option value="alimentos">Alimentos</option>
-                <option value="juguetes">Juguetes</option>
-                <option value="salud">Salud</option>
-                <option value="higiene">Higiene</option>
                 <option value="accesorios">Accesorios</option>
+                <option value="alimentos">Alimentos</option>
+                <option value="higiene">Higiene</option>
+                <option value="juguetes">Juguetes</option>
+                <option value="salud">Salud</option>                
                 </select>
             </div>
             <div>

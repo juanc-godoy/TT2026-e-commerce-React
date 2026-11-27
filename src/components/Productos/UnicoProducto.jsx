@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase/config"
 import { doc, getDoc } from "firebase/firestore"
-/* import { useCart } from "../Context/CarritoContext"; */
-
 
 const UnicoProducto = ()=>{
     const {id}= useParams()
@@ -35,20 +33,11 @@ const UnicoProducto = ()=>{
         }
         
         fetchProducto()
-        /* fetch('/data/productos.json')
-            .then((res) => res.json())
-            .then((data)=> {
-                const encontrado= data.find(prod=> prod.id===parseInt(id))
-                setProducto(encontrado)
-            })
-            .catch((error)=> console.error("Error al cargar el producto", error))
-            .finally(()=>setCargando(false)) */
     },[id])
     let precioFormato
     if (producto && producto.nombre) {
         precioFormato= new Intl.NumberFormat('es-AR').format(producto.precio)
     }
-    /* const precioFormato= new Intl.NumberFormat('es-AR').format(producto.precio?) */
 
     if (cargando){
         return <h2>Cargando detalle del producto...</h2>
@@ -76,6 +65,3 @@ const UnicoProducto = ()=>{
 }
 
 export default UnicoProducto
-
-/*
-*/

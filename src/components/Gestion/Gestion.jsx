@@ -40,7 +40,6 @@ const Gestion= ()=>{
         setEsEdicion(false)
         setModal(true)
     }
-    
 
     return(
         <div>

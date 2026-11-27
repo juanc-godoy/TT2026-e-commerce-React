@@ -19,6 +19,3 @@ export function SearchProvider({children}){
         </SearchContext.Provider>
     )
 }
-
-/*
-*/
